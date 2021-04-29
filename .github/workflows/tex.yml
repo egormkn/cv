@@ -1,0 +1,31 @@
+# This is a workflow to build and deploy LaTeX sources
+
+name: Build and deploy LaTeX sources to GitHub Releases
+
+on:
+#   push:
+#     branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out a repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - name: Build document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+          working_directory: ./
+          args: -jobname=cv -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          compiler: latexmk
+
+      - name: Upload pdf document
+        uses: actions/upload-artifact@v2
+        with:
+          name: cv
+          path: cv.pdf
