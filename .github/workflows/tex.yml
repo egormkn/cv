@@ -1,6 +1,6 @@
 # This is a workflow to build and deploy LaTeX sources
 
-name: Build and deploy LaTeX sources to GitHub Releases
+name: Build PDF from LaTeX
 
 on:
 #   push:
@@ -14,20 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checks-out a repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: Checkout a repository
+        uses: actions/checkout@v2
         with:
-          submodules: 'recursive'
+          submodules: true
       
-      - name: Build document
-        uses: xu-cheng/latex-action@v2
+      - name: List available files
+        run: find "$(pwd)" -maxdepth 1
+        
+      - name: Build PDF documents
+        uses: xu-cheng/texlive-action/full@v1
         with:
-          root_file: main.tex
-          working_directory: ./
-          args: -jobname=cv -pdf -file-line-error -halt-on-error -interaction=nonstopmode
-          compiler: latexmk
+          run: latexmk
+      
+      - name: List available files
+        run: find "$(pwd)/build" -maxdepth 1
 
-      - name: Upload pdf document
+      - name: Upload PDF documents
         uses: actions/upload-artifact@v2
         with:
-          name: cv
-          path: cv.pdf
+          name: curriculum-vitae
+          path: build/*.pdf
+ # deploy:
