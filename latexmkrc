@@ -1,2 +1,6 @@
 $ENV{'TZ'}='Europe/Moscow';
-ensure_path('TEXINPUTS', './moderncv//');
+if (exists &{'ensure_path'}) {
+  ensure_path('TEXINPUTS', './moderncv//');
+} else {
+  $ENV{'TEXINPUTS'} = '.:./moderncv//:';
+}
