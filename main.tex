@@ -1,15 +1,15 @@
 \documentclass[11pt, a4paper, sans]{moderncv}
 
-\usepackage[ru, en]{variants}
-
 \moderncvstyle{classic}
 \moderncvcolor{blue}
 \moderncvicons{awesome}
 
+\usepackage[ru, en]{variants}
+
+\usepackage{cmap}
 \usepackage[T1, T2A]{fontenc}
-\usepackage[russian, english]{babel}
-%\usepackage{cmap}
 %\usepackage[utf8]{inputenc}
+\usepackage[russian, english]{babel}
 \usepackage[default]{droidserif}
 \usepackage[defaultsans]{droidsans}
 
@@ -18,23 +18,20 @@
 
 \usepackage{xcolor}
 
-\usepackage{datetime}
-\newdateformat{yyyymmdate}{\THEYEAR.\twodigit{\THEMONTH}}
-
-\makeatletter
-\AtEndPreamble{
-    \hypersetup{
-        pdfsubject  = {\ru{Резюме}\en{Resume of} \@firstname{}~\@lastname{}},
-        pdfkeywords = {cv, resume, curriculum vit\ae{}, r\'{e}sum\'{e}, резюме, \@firstname{}~\@lastname{}, C++, Python}
-    }
-}
-\makeatother
+\usepackage{gitinfo2}
 
 % Patches
 \usepackage{xpatch}
 \xpatchcmd{\makecvhead}{\\[2.5em]}{\\}{}{}
 \renewcommand*{\mobilephonesymbol}{{\small\faMobile*}~}
 \renewcommand*{\emailsymbol}{{\small\faEnvelope[regular]}~}
+
+\AtEndPreamble{
+\hypersetup{
+    pdfsubject  = {\ru{Резюме}\en{Resume}},
+    pdfkeywords = {cv, resume, curriculum vit\ae{}, r\'{e}sum\'{e}, резюме}
+}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    TITLE                                     %
@@ -66,98 +63,97 @@
 \makecvtitle
 
 \section{%
-    \ru{Образование}\en{Education}%
-}
+  \ru{Образование}\en{Education}%
+ }
 
 \cventry{2015--2019}{%
-    \ru{Бакалавриат, Прикладная математика и информатика}%
-    \en{BSc, Applied Mathematics and Computer Science}%
+  \ru{Бакалавриат, Прикладная математика и информатика}%
+  \en{BSc, Applied Mathematics and Computer Science}%
 }{%
-    \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
-    \en{Information Technologies and Programming Faculty, ITMO University}%
+  \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
+  \en{Information Technologies and Programming Faculty, ITMO University}%
 }{%
-    \ru{Санкт-Петербург}\en{Saint Petersburg}%
+  \ru{Санкт-Петербург}\en{Saint Petersburg}%
 }{}{%
-    \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
-    % TODO: English variant
+  \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
+  % TODO: English variant
 }
 
 \cventry{\ru{с}\en{since} 2019}{%
-    \ru{Магистратура, Прикладная математика и информатика}%
-    \en{MSc, Applied Mathematics and Computer Science}%
+  \ru{Магистратура, Прикладная математика и информатика}%
+  \en{MSc, Applied Mathematics and Computer Science}%
 }{%
-    \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
-    \en{Computer Technologies department, ITMO University}%
+  \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
+  \en{Computer Technologies department, ITMO University}%
 }{%
-    \ru{Санкт-Петербург}\en{Saint Petersburg}%
+  \ru{Санкт-Петербург}\en{Saint Petersburg}%
 }{}{%
-    \ru{Профиль: программирование и искусственный интеллект.}%
-    % TODO: English variant
+  \ru{Профиль: программирование и искусственный интеллект.}%
+  % TODO: English variant
 }
 
 \subsection{%
-    \ru{Курсы и профессиональная литература}%
-    \en{Courses \& books}%
+  \ru{Курсы и профессиональная литература}%
+  \en{Courses \& books}%
 }
 
 \cvitem{Coursera:}{%
-    \ru{Специализация <<\textbf{Искусство разработки на современном C++}>> --- Яндекс, МФТИ}%
-    \en{Specialization "\textbf{C++ Modern Development}" --- Yandex, MIPT}%
+  \ru{Специализация <<\textbf{Искусство разработки на современном C++}>> --- Яндекс, МФТИ}%
+  \en{Specialization "\textbf{C++ Modern Development}" --- Yandex, MIPT}%
 }
 
 \cvitem{\ru{Книги}\en{Books}:}{%
-    \ru{Архитектура компьютера --- Э. Таненбаум}%
-    \en{Structured Computer Organization --- A. Tanenbaum}%
+  \ru{Архитектура компьютера --- Э. Таненбаум}%
+  \en{Structured Computer Organization --- A. Tanenbaum}%
 }
 
 \section{%
-    \ru{Опыт работы}%
-    \en{Work experience}%
-}
+  \ru{Опыт работы}%
+  \en{Work experience}%
+ }
 \cventry{2019--2020}{%
-    \ru{Стажёр}\en{Intern}%
+  \ru{Стажёр}\en{Intern}%
 }{%
-    \ru{Международная лаборатория <<Компьютерные технологии>>, Университет ИТМО}%
-    \en{International Laboratory "Computer Technologies", ITMO University}%
+  \ru{Международная лаборатория <<Компьютерные технологии>>, Университет ИТМО}%
+  \en{International Laboratory "Computer Technologies", ITMO University}%
 }{}{}{%
-    % TODO: General description no longer than 1--2 lines.
+  % TODO: General description no longer than 1--2 lines.
 }
 
 \section{%
-    \ru{Профессиональные навыки}%
-    \en{Professional skills}%
-}\closesection
+  \ru{Профессиональные навыки}%
+  \en{Professional skills}%
+ }\closesection
 
 \begin{itemize}
-\item Achievement 1
-\item Achievement 2 (with sub-achievements)
-  \begin{itemize}
-  \item Sub-achievement (a);
-  \item Sub-achievement (b), with sub-sub-achievements (don't do this!);
-    \begin{itemize}
-    \item Sub-sub-achievement i;
-    \item Sub-sub-achievement ii;
-    \item Sub-sub-achievement iii;
-    \end{itemize}
-  \item Sub-achievement (c);
-  \end{itemize}
-\item Achievement 3
-\item Achievement 4
+  \item Achievement 1
+  \item Achievement 2 (with sub-achievements)
+        \begin{itemize}
+          \item Sub-achievement (a);
+          \item Sub-achievement (b), with sub-sub-achievements (don't do this!);
+                \begin{itemize}
+                  \item Sub-sub-achievement i;
+                  \item Sub-sub-achievement ii;
+                  \item Sub-sub-achievement iii;
+                \end{itemize}
+          \item Sub-achievement (c);
+        \end{itemize}
+  \item Achievement 3
+  \item Achievement 4
 \end{itemize}
 
 \section{%
-    \ru{Проекты}\en{Projects}%
-}\closesection
+  \ru{Проекты}\en{Projects}%
+ }\closesection
 
 Your content here, inside the normal \LaTeX environment. You can use any regular \LaTeX{} command, display mathematics, put some table or figure, \dots
 
-\[e =m\,c^2,\] 
+\[e =m\,c^2,\]
 
 \emptysection{}
 \cvline{Now}{Back to moderncv layout, without making a new section :-)}
 \cvline{Long}{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis suscipit turpis, et suscipit tortor malesuada non. Sed sit amet dignissim ex. Pellentesque in ipsum at nunc faucibus iaculis ut ac justo. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut.}
 
-\lfoot{\small\textcolor{gray}{\link{https://github.com/egormkn/cv}}}
-\rfoot{\small\textcolor{gray}{v\yyyymmdate\today}}
+\cfoot{\small\textcolor{gray}{\href{https://github.com/egormkn/cv/releases}{https://github.com/egormkn/cv | \gitFirstTagDescribe}}}
 
 \end{document}

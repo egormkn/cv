@@ -1,6 +1,4 @@
-# This is a workflow to build and deploy LaTeX sources
-
-name: Build PDF from LaTeX
+name: Build PDF
 on: [push, workflow_dispatch]
 jobs:
   build:
@@ -16,7 +14,7 @@ jobs:
         with:
           run: latexmk
 
-      - name: Upload PDF documents
+      - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: pdf
@@ -32,18 +30,9 @@ jobs:
         with:
           name: pdf
 
-      - name: List available files
-        run: ls
-
-      - name: Generate version
-        id: generate_version
-        run: echo "::set-output name=version::$(date +'%Y.%m.%d')"
-
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          name: Curriculum vitae v${{ steps.generate_version.outputs.version }}
           files: "*.pdf"
-          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

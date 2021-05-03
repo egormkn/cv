@@ -8,8 +8,8 @@
 %     \en{English text}
 %     \ru{Русский текст}
 %
-% pdflatex --jobname=variant-ru "\AtBeginDocument{\usevariant{ru}}\input{main.tex}"
-% pdflatex --jobname=variant-en "\AtBeginDocument{\usevariant{en}}\input{main.tex}"
+% pdflatex --jobname=variant-ru "\AtBeginDocument{\setvariant{ru}}\input{main.tex}"
+% pdflatex --jobname=variant-en "\AtBeginDocument{\setvariant{en}}\input{main.tex}"
 %
 % Copyright 2021 Egor Makarenko (github.com/egormkn)
 %
@@ -24,15 +24,21 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{variants}[2021/04/28 Multiple variants (translations/styles) of the same document]
 
-\RequirePackage{etoolbox}
-\RequirePackage{xparse}
+\RequirePackage{ifluatex}
 
-\newcommand{\usevariant}[1]{\renewcommand{\currentvariant}{#1}}
+\ifluatex
+\RequirePackage{pdftexcmds}
+\makeatletter
+\let\pdfstrcmp\pdf@strcmp
+\makeatother
+\fi
+
+\newcommand{\setvariant}[1]{\renewcommand{\getvariant}{#1}}
 
 % https://tex.stackexchange.com/a/38432/240876
 \newcommand{\addvariant}[1]{%
-    \providecommand{\currentvariant}{#1}%
-    \expandafter\newcommand\csname #1\endcsname[1]{\ifnum\pdfstrcmp{#1}{\currentvariant}=\z@\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi{##1}{}}%
+    \providecommand{\getvariant}{#1}%
+    \expandafter\newcommand\csname #1\endcsname[1]{\ifnum\pdfstrcmp{#1}{\getvariant}=\z@\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi{##1}{}}%
 }
 
 \DeclareOption*{\expandafter\addvariant\expandafter{\CurrentOption}}
