@@ -1,11 +1,11 @@
 use File::Glob ':bsd_glob';
 
-$ENV{'TZ'} = 'Europe/Moscow';
 if (exists &{'ensure_path'}) {
   ensure_path('TEXINPUTS', './moderncv//');
 } else {
   $ENV{'TEXINPUTS'} = '.:./moderncv//:';
 }
+$ENV{'TZ'} = 'Europe/Moscow';
 $pdf_mode = 1;
 $dvi_mode = $postscript_mode = 0;
 $out_dir = 'build';

@@ -48,13 +48,12 @@ sub gitinfo2 {
   });
 
   if ($METADATA ne $METADATA_OLD) {
-    print("Status changed, request recompilation\n");
+    print("Status changed, request recompilation");
     open(my $fh, '>', $GIN) or die $!;
     print $fh ($METADATA . "\n");
     close($fh);
     $go_mode = 1;
   }
-
 }
 
 gitinfo2();
