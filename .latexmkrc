@@ -11,4 +11,6 @@ $dvi_mode = $postscript_mode = 0;
 $out_dir = 'build';
 @default_files = bsd_glob('cv-*.tex');
 
-do './gitinfo2.pm';
+# do './gitinfo2.pm';
+
+print(`######################\nls -a\n######################\n`);

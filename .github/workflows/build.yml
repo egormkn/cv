@@ -10,12 +10,6 @@ jobs:
           submodules: true
           # fetch-depth: 0
 
-      - name: List all files
-        run: ls -a
-
-      - name: Get gitinfo path
-        run: git rev-parse --git-path gitHeadInfo.gin
-
       - name: Build PDF documents from LaTeX
         uses: xu-cheng/texlive-action/full@v1
         with:
