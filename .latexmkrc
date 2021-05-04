@@ -13,4 +13,5 @@ $out_dir = 'build';
 
 # do './gitinfo2.pm';
 
-print(`######################\nls -a\n######################\n`);
+print("------\n" . `git rev-parse --git-path gitHeadInfo.gin` . "------\n");
+print("------\n" . `git describe --tags --always --dirty='-*' 2>&1` . "------\n");
