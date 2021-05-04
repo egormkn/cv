@@ -3,16 +3,15 @@ on: [push, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: texlive/texlive:latest
     steps:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v2
         with:
           submodules: true
 
-      - name: Build PDF documents from LaTeX
-        uses: xu-cheng/texlive-action/full@v1
-        with:
-          run: latexmk
+      - name: Build PDF documents with latexmk
+        run: latexmk
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
