@@ -11,9 +11,7 @@ jobs:
           # fetch-depth: 0
 
       - name: Build PDF documents from LaTeX
-        uses: xu-cheng/texlive-action/full@v1
-        with:
-          run: latexmk
+        uses: ./.github/actions/texlive.yml
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
