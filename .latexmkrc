@@ -11,7 +11,4 @@ $dvi_mode = $postscript_mode = 0;
 $out_dir = 'build';
 @default_files = bsd_glob('cv-*.tex');
 
-# do './gitinfo2.pm';
-
-print("------\n" . `git rev-parse --git-path gitHeadInfo.gin` . "------\n");
-print("------\n" . `git describe --tags --always --dirty='-*' 2>&1` . "------\n");
+do './gitinfo2.pm';

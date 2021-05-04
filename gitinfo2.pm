@@ -20,11 +20,11 @@ sub gitinfo2 {
 
   my $RELEASE_MATCHER = "[0-9]*.*";
 
-  # if (%GI2TM_OPTIONS) {
-  #   if (exists $GI2TM_OPTIONS{"RELEASE_MATCHER"}) {
-  #       $RELEASE_MATCHER = $GI2TM_OPTIONS{"RELEASE_MATCHER"};
-  #   }
-  # }
+  if (%GI2TM_OPTIONS) {
+    if (exists $GI2TM_OPTIONS{"RELEASE_MATCHER"}) {
+        $RELEASE_MATCHER = $GI2TM_OPTIONS{"RELEASE_MATCHER"};
+    }
+  }
 
   local $/ = "\n";
 
@@ -40,23 +40,20 @@ sub gitinfo2 {
   # Hoover up the metadata
   chomp(my $METADATA = `git --no-pager log -1 --date=short --decorate=short --pretty=format:"\\usepackage[shash={%h}, lhash={%H}, authname={%an}, authemail={%ae}, authsdate={%ad}, authidate={%ai}, authudate={%at}, commname={%cn}, commemail={%ce}, commsdate={%cd}, commidate={%ci}, commudate={%ct}, refnames={%d}, firsttagdescribe={$FIRSTTAG}, reltag={$RELTAG}]{gitexinfo}" HEAD 2>/dev/null`);
 
-  print("### " . $GIN . " ###");
-  print("### " . $METADATA . " ###");
-
   # Read previous metadata
-  # chomp(my $METADATA_OLD = do {
-  #   local $/;
-  #   my $status = open(my $fh, '<', $GIN);
-  #   $status ? <$fh> : "";
-  # });
+  chomp(my $METADATA_OLD = do {
+    local $/;
+    my $status = open(my $fh, '<', $GIN);
+    $status ? <$fh> : "";
+  });
 
-  # if ($METADATA ne $METADATA_OLD) {
-  #   print("Status changed, request recompilation\n");
-  #   open(my $fh, '>', $GIN) or die $!;
-  #   print $fh ($METADATA . "\n");
-  #   close($fh);
-  #   $go_mode = 1;
-  # }
+  if ($METADATA ne $METADATA_OLD) {
+    print("Status changed, request recompilation\n");
+    open(my $fh, '>', $GIN) or die $!;
+    print $fh ($METADATA . "\n");
+    close($fh);
+    $go_mode = 1;
+  }
 
 }
 
