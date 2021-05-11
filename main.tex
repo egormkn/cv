@@ -1,8 +1,10 @@
+\PassOptionsToPackage{fixed}{fontawesome5}
+
 \documentclass[11pt, a4paper, sans]{moderncv}
 
 \moderncvstyle{classic}
 \moderncvcolor{blue}
-\moderncvicons{awesome}
+\moderncvicons{awesome-color}
 
 \usepackage[ru, en]{variants}
 
@@ -17,15 +19,11 @@
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2.25cm]{geometry}
 \setlength{\hintscolumnwidth}{2cm}
 
-\usepackage{xcolor}
-
 \usepackage{gitinfo2}
 
 % Patches
 \usepackage{xpatch}
 \xpatchcmd{\makecvhead}{\\[2.5em]}{\\}{}{}
-\renewcommand*{\mobilephonesymbol}{{\small\faMobile*}~}
-\renewcommand*{\emailsymbol}{{\small\faEnvelope[regular]}~}
 
 \AtEndPreamble{
 \hypersetup{
@@ -67,30 +65,30 @@
   \ru{Образование}\en{Education}%
  }
 
-\cventry{2015--2019}{%
-  \ru{Бакалавриат, Прикладная математика и информатика}%
-  \en{BSc, Applied Mathematics and Computer Science}%
-}{%
-  \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
-  \en{Information Technologies and Programming Faculty, ITMO University}%
-}{%
-  \ru{Санкт-Петербург}\en{Saint Petersburg}%
-}{}{%
-  \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
-  % TODO: English variant
-}
-
 \cventry{\ru{с}\en{since} 2019}{%
   \ru{Магистратура, Прикладная математика и информатика}%
   \en{MSc, Applied Mathematics and Computer Science}%
 }{%
   \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
-  \en{Computer Technologies department, ITMO University}%
+  \en{\newline Information Technologies and Programming Faculty, ITMO University}%
 }{%
-  \ru{Санкт-Петербург}\en{Saint Petersburg}%
+  \ru{Санкт-Петербург}\en{\newline Saint Petersburg}%
 }{}{%
   \ru{Профиль: программирование и искусственный интеллект.}%
-  % TODO: English variant
+  \en{Programming and Artificial Intelligence}%
+}
+
+\cventry{2015--2019}{%
+  \ru{Бакалавриат, Прикладная математика и информатика}%
+  \en{BSc, Applied Mathematics and Computer Science}%
+}{%
+  \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
+  \en{\newline Information Technologies and Programming Faculty, ITMO University}%
+}{%
+  \ru{Санкт-Петербург}\en{\newline Saint Petersburg}%
+}{}{%
+  \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
+  \en{Mathematical Models and Algorithms in Software Development}%
 }
 
 \subsection{%
@@ -100,7 +98,7 @@
 
 \cvitem{Coursera:}{%
   \ru{Специализация <<\textbf{Искусство разработки на современном C++}>> --- Яндекс, МФТИ}%
-  \en{Specialization "\textbf{C++ Modern Development}" --- Yandex, MIPT}%
+  \en{Specialization "\textbf{Modern C++ Development}" --- Yandex, MIPT}%
 }
 
 \cvitem{\ru{Книги}\en{Books}:}{%
@@ -124,24 +122,22 @@
 \section{%
   \ru{Профессиональные навыки}%
   \en{Professional skills}%
- }\closesection
+ }
 
-\begin{itemize}
-  \item Achievement 1
-  \item Achievement 2 (with sub-achievements)
-        \begin{itemize}
-          \item Sub-achievement (a);
-          \item Sub-achievement (b), with sub-sub-achievements (don't do this!);
-                \begin{itemize}
-                  \item Sub-sub-achievement i;
-                  \item Sub-sub-achievement ii;
-                  \item Sub-sub-achievement iii;
-                \end{itemize}
-          \item Sub-achievement (c);
-        \end{itemize}
-  \item Achievement 3
-  \item Achievement 4
-\end{itemize}
+\cvitem{\textcolor{color1}{\faCode}}{%
+  \textbf{C++} (STL, Qt), \textbf{Python} (NumPy, Tensorflow), Java, Javascript/Typescript, Bash; \newline \ru{также знаком с}\en{also familiar with} x86 Assembly, Haskell, SQL.
+}
+\cvitem{\textcolor{color1}{\faTools}}{%
+  Linux, Git, Make, CMake, \ldots, HTML, CSS, Markdown, LaTeX
+}
+\cvitem{\textcolor{color1}{\faLightbulb}}{%
+  \ru{Алгоритмы и структуры данных, многопоточные алгоритмы, основы машинного обучения.}%
+  \en{Algorithms and data structures, multithreading, basics of machime learning.}%
+}
+\cvitem{\textcolor{color1}{\faGlobe}}{%
+  \ru{Английский язык (уровень C1 Advanced)}%
+  \en{Russian (native), English (C1 Advanced)}%
+}
 
 \section{%
   \ru{Проекты}\en{Projects}%
@@ -153,7 +149,12 @@ Your content here, inside the normal \LaTeX environment. You can use any regular
 
 \emptysection{}
 \cvline{Now}{Back to moderncv layout, without making a new section :-)}
-\cvline{Long}{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis suscipit turpis, et suscipit tortor malesuada non. Sed sit amet dignissim ex. Pellentesque in ipsum at nunc faucibus iaculis ut ac justo. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut.}
+
+\section{%
+  \ru{О себе}\en{About}%
+ }\closesection
+
+\cvline{Long}{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis suscipit turpis, et suscipit tortor malesuada non. Sed sit amet dignissim ex. Pellentesque in ipsum at nunc faucibus iaculis ut ac justo. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut.}
 
 \cfoot{\small\textcolor{gray}{\href{https://github.com/egormkn/cv/releases}{https://github.com/egormkn/cv | \gitFirstTagDescribe}}}
 
