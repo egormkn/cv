@@ -22,8 +22,8 @@
 \usepackage{gitinfo2}
 
 % Patches
-\usepackage{xpatch}
-\xpatchcmd{\makecvhead}{\\[2.5em]}{\\}{}{}
+%\usepackage{xpatch}
+%\xpatchcmd{\makecvhead}{\\[2.5em]}{\\}{}{}
 
 \AtEndPreamble{
 \hypersetup{
@@ -52,7 +52,7 @@
 \social[telegram]{egormkn}
 \social[linkedin]{egormkn}
 % \extrainfo{Some info}
-% \photo[64pt][0.5pt]{picture}
+\photo[55pt][0.4pt]{photo}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    CONTENT                                   %
@@ -88,12 +88,12 @@
   \ru{Санкт-Петербург}\en{\newline Saint Petersburg}%
 }{}{%
   \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
-  \en{Mathematical Models and Algorithms in Software Development}%
+  \en{Mathematical Models and Algorithms in Software Development \\ Thesis: Solver for the flux variance analysis problem with thermodynamical constraints based on reduction to mixed integer linear programming.}%
 }
 
 \subsection{%
-  \ru{Курсы и профессиональная литература}%
-  \en{Courses \& books}%
+  \ru{Дополнительные курсы}%
+  \en{Additional courses}%
 }
 
 \cvitem{Coursera:}{%
@@ -101,23 +101,36 @@
   \en{Specialization "\textbf{Modern C++ Development}" --- Yandex, MIPT}%
 }
 
-\cvitem{\ru{Книги}\en{Books}:}{%
-  \ru{Архитектура компьютера --- Э. Таненбаум}%
-  \en{Structured Computer Organization --- A. Tanenbaum}%
+\cvitem{SPTDC:}{%
+  Summer school on practice and theory of distributed computing, 2019 --- JUG Ru%
 }
+
+% \cvitem{\ru{Книги}\en{Books}:}{%
+%   \ru{Архитектура компьютера --- Э. Таненбаум}%
+%   \en{Structured Computer Organization --- A. Tanenbaum}%
+% }
 
 \section{%
   \ru{Опыт работы}%
   \en{Work experience}%
  }
+
 \cventry{2019--2020}{%
   \ru{Стажёр}\en{Intern}%
 }{%
-  \ru{Международная лаборатория <<Компьютерные технологии>>, Университет ИТМО}%
+  \ru{Международная лаборатория <<Компьютерные технологии>>, \newline Университет ИТМО}%
   \en{International Laboratory "Computer Technologies", ITMO University}%
 }{}{}{%
-  % TODO: General description no longer than 1--2 lines.
+  \ru{Улучшение инструментов анализа и визуализации данных.}%
+  \en{Improving data analysis and visualization tools.}%
 }
+
+\cventry{2016--2019}{%
+  \ru{Волонтёр}\en{Volunteer}%
+}{%
+  \ru{Командные олимпиады по программированию (NEERC, ВКОШП), Университет ИТМО}%
+  \en{Northeastern European Regional Contest, ITMO University}%
+}{}{}{}
 
 \section{%
   \ru{Профессиональные навыки}%
@@ -125,37 +138,48 @@
  }
 
 \cvitem{\textcolor{color1}{\faCode}}{%
-  \textbf{C++} (STL, Qt), \textbf{Python} (NumPy, Tensorflow), Java, Javascript/Typescript, Bash; \newline \ru{также знаком с}\en{also familiar with} x86 Assembly, Haskell, SQL.
+  \textbf{C++} (STL, Qt), \textbf{Python} (NumPy, Tensorflow), Java, Javascript, Typescript, Bash; \newline \ru{также знаком с}\en{also familiar with} x86 Assembly, Haskell, SQL.
 }
 \cvitem{\textcolor{color1}{\faTools}}{%
-  Linux, Git, Make, CMake, \ldots, HTML, CSS, Markdown, LaTeX
-}
-\cvitem{\textcolor{color1}{\faLightbulb}}{%
-  \ru{Алгоритмы и структуры данных, многопоточные алгоритмы, основы машинного обучения.}%
-  \en{Algorithms and data structures, multithreading, basics of machime learning.}%
+  Linux, Git, Make, CMake, Docker, HTML, CSS, Markdown, LaTeX
 }
 \cvitem{\textcolor{color1}{\faGlobe}}{%
   \ru{Английский язык (уровень C1 Advanced)}%
-  \en{Russian (native), English (C1 Advanced)}%
+  \en{Russian (Native), English (C1 Advanced)}%
+}
+\cvitem{\textcolor{color1}{\faLightbulb}}{%
+  \ru{Алгоритмы и структуры данных, многопоточное программирование, основы машинного обучения.}%
+  \en{Algorithms and data structures, multithreading, basics of machine learning.}%
+}
+\cvitem{\textcolor{color1}{\faSitemap}}{%
+  \ru{Есть опыт разработки Android приложений, бэкенда на NestJS, обучения нейронных сетей, программирования для Arduino, создания расширений для браузера и VSCode.}%
+  \en{I have an experience in developing Android applications, backend development with NestJS framework, training neural networks, working with Arduino, developing extensions for web browsers and VSCode.}%
 }
 
 \section{%
   \ru{Проекты}\en{Projects}%
  }\closesection
 
-Your content here, inside the normal \LaTeX environment. You can use any regular \LaTeX{} command, display mathematics, put some table or figure, \dots
+\ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}:
+  \\
+  \begin{itemize}
+    \setlength{\itemindent}{2em}
+    \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- загрузочный сектор для x86 c выбором раздела,
+    \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ обёртка для C-библиотеки SDL с простым менеджером 2D-сцен,
+    \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- решения задач специализации Coursera.
+  \end{itemize}
+}%
+\en{
+  My personal projects, courseworks and problem solutions can be found at \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}:
+  \\
+  \begin{itemize}
+    \setlength{\itemindent}{2em}
+    \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- x86 boot sector with partition selection menu,
+    \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ wrapper for C library SDL with a simple 2D scene manager,
+    \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- solutions for the Coursera specialization.
+  \end{itemize}
+}
 
-\[e =m\,c^2,\]
-
-\emptysection{}
-\cvline{Now}{Back to moderncv layout, without making a new section :-)}
-
-\section{%
-  \ru{О себе}\en{About}%
- }\closesection
-
-\cvline{Long}{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis suscipit turpis, et suscipit tortor malesuada non. Sed sit amet dignissim ex. Pellentesque in ipsum at nunc faucibus iaculis ut ac justo. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut. Vestibulum accumsan neque lectus, nec consectetur mauris tincidunt ut.}
-
-\cfoot{\small\textcolor{gray}{\href{https://github.com/egormkn/cv/releases}{https://github.com/egormkn/cv | \gitFirstTagDescribe}}}
+\cfoot{\small\textcolor{gray}{\href{https://github.com/egormkn/cv/releases}{\gitFirstTagDescribe\ (\getvariant)}}}
 
 \end{document}
