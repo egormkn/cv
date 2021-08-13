@@ -10,6 +10,9 @@ jobs:
         with:
           submodules: true
 
+      - name: Install dependencies
+        run: ln -sf $(find /usr/local/texlive -wholename *texmf-dist/fonts -type d) /usr/share/fonts/texlive && fc-cache -s -f && fc-list
+
       - name: Build PDF documents with latexmk
         run: latexmk
 

@@ -1,0 +1,5 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{selectiontext}[2021/08/12 Custom selection text in PDFs]
+
+\RequirePackage{accsupp}
+\newcommand{\selectiontext}[2]{\protect\BeginAccSupp{method=pdfstringdef, ActualText={#1}}#2\protect\EndAccSupp{}}

@@ -1,6 +1,6 @@
 \PassOptionsToPackage{fixed}{fontawesome5}
 
-\documentclass[11pt, a4paper, sans]{moderncv}
+\documentclass[11pt, a4paper, sans, nolmodern]{moderncv}
 
 \moderncvstyle{classic}
 \moderncvcolor{blue}
@@ -8,7 +8,7 @@
 
 \usepackage[ru, en]{variants}
 
-\usepackage{cmap}
+%\usepackage[resetfonts]{cmap}
 \usepackage[T1, T2A]{fontenc}
 %\usepackage[utf8]{inputenc}
 \usepackage[russian, english]{babel}
@@ -20,6 +20,7 @@
 \setlength{\hintscolumnwidth}{2cm}
 
 \usepackage{gitinfo2}
+\usepackage{selectiontext}
 
 % Patches
 %\usepackage{xpatch}
@@ -137,21 +138,21 @@
   \en{Professional skills}%
  }
 
-\cvitem{\textcolor{color1}{\faCode}}{%
+\cvitem{\textcolor{color1}{\selectiontext{\ru{Языки программирования}\en{Programming languages}: }{\faCode}}}{%
   \textbf{C++} (STL, Qt), \textbf{Python} (NumPy, Tensorflow), Java, Javascript, Typescript, Bash; \newline \ru{также знаком с}\en{also familiar with} x86 Assembly, Haskell, SQL.
 }
-\cvitem{\textcolor{color1}{\faTools}}{%
+\cvitem{\textcolor{color1}{\selectiontext{\ru{Инструменты}\en{Tools}: }{\faTools}}}{%
   Linux, Git, Make, CMake, Docker, HTML, CSS, Markdown, LaTeX
 }
-\cvitem{\textcolor{color1}{\faGlobe}}{%
+\cvitem{\textcolor{color1}{\selectiontext{\ru{Языки}\en{Languages}: }{\faGlobe}}}{%
   \ru{Английский язык (уровень C1 Advanced)}%
   \en{Russian (Native), English (C1 Advanced)}%
 }
-\cvitem{\textcolor{color1}{\faLightbulb}}{%
+\cvitem{\textcolor{color1}{\selectiontext{\ru{Знания}\en{Knowledge}: }{\faLightbulb}}}{%
   \ru{Алгоритмы и структуры данных, многопоточное программирование, основы машинного обучения.}%
   \en{Algorithms and data structures, multithreading, basics of machine learning.}%
 }
-\cvitem{\textcolor{color1}{\faSitemap}}{%
+\cvitem{\textcolor{color1}{\selectiontext{\ru{Опыт}\en{Experience}: }{\faSitemap}}}{%
   \ru{Есть опыт разработки Android приложений, бэкенда на NestJS, обучения нейронных сетей, программирования для Arduino, создания расширений для браузера и VSCode.}%
   \en{I have an experience in developing Android applications, backend development with NestJS framework, training neural networks, working with Arduino, developing extensions for web browsers and VSCode.}%
 }
