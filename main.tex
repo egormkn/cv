@@ -51,7 +51,7 @@
 \email{egormkn@yandex.ru}
 \social[github]{egormkn}
 \social[telegram]{egormkn}
-\social[linkedin]{egormkn}
+% \social[linkedin]{egormkn}
 % \extrainfo{Some info}
 \photo[58pt][0.2pt]{photo}
 
@@ -60,13 +60,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+
 \makecvtitle
+
+\vspace*{-5mm}
 
 \section{%
   \ru{Образование}\en{Education}%
  }
 
-\cventry{\ru{с}\en{since} 2019}{%
+\cventry{2019--2022}{%
   \ru{Магистратура, Прикладная математика и информатика}%
   \en{MSc, Applied Mathematics and Computer Science}%
 }{%
@@ -75,8 +78,8 @@
 }{%
   \ru{Санкт-Петербург}\en{\newline Saint Petersburg}%
 }{}{%
-  \ru{Профиль: программирование и искусственный интеллект.}%
-  \en{Programming and Artificial Intelligence}%
+  \ru{Профиль: программирование и искусственный интеллект. \\ Тема ВКР: Ускорение построения кривых перемагничивания первого порядка с использованием вычислений на видеокартах.}%
+  \en{Programming and Artificial Intelligence \\ Thesis: Accelerated plotting of first-order reversal curves using GPU computing.}%
 }
 
 \cventry{2015--2019}{%
@@ -116,6 +119,16 @@
   \en{Work experience}%
  }
 
+\cventry{\ru{с}\en{since} 2022}{%
+ \ru{Программист}\en{Software developer}%
+}{%
+ \ru{ООО <<Судо>>}%
+ \en{Sudo LLC}%
+}{}{}{%
+ \ru{Разработка ПО для выполнения расчётов в области геофизики с переносом части вычислений на видеокарту (\href{https://forctool.com/}{\textbf{forctool.com}}).}%
+ \en{Developing software for scientific research using GPU computing (\href{https://forctool.com/}{\textbf{forctool.com}}).}%
+}
+
 \cventry{2019--2020}{%
   \ru{Стажёр}\en{Intern}%
 }{%
@@ -139,7 +152,7 @@
  }
 
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Языки программирования}\en{Programming languages}: }{\faCode}}}{%
-  \textbf{C++} (STL, Qt), \textbf{Python} (NumPy, Tensorflow), Java, Javascript, Typescript, Bash; \newline \ru{также знаком с}\en{also familiar with} x86 Assembly, Haskell, SQL.
+  \textbf{C/C++} (STL, OpenCL, Qt), \textbf{Python} (NumPy, Tensorflow, PyTorch, Cython, Dask), Javascript/Typescript, Bash; \ru{также знаком с}\en{also familiar with} Java, x86 Assembly, Haskell, SQL.
 }
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Инструменты}\en{Tools}: }{\faTools}}}{%
   Linux, Git, Make, CMake, Docker, HTML, CSS, Markdown, LaTeX
@@ -149,8 +162,8 @@
   \en{Russian (Native), English (C1 Advanced)}%
 }
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Знания}\en{Knowledge}: }{\faLightbulb}}}{%
-  \ru{Алгоритмы и структуры данных, многопоточное программирование, основы машинного обучения.}%
-  \en{Algorithms and data structures, multithreading, basics of machine learning.}%
+  \ru{Алгоритмы и структуры данных, многопоточное программирование, машинное обучение, нейронные сети.}%
+  \en{Algorithms and data structures, multithreading, machine learning and neural networks.}%
 }
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Опыт}\en{Experience}: }{\faSitemap}}}{%
   \ru{Есть опыт разработки Android приложений, бэкенда на NestJS, обучения нейронных сетей, программирования для Arduino, создания расширений для браузера и VSCode.}%
@@ -161,24 +174,24 @@
   \ru{Проекты}\en{Projects}%
  }\closesection
 
-\ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}:
-  \\
-  \begin{itemize}
-    \setlength{\itemindent}{2em}
-    \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- загрузочный сектор для x86 c выбором раздела,
-    \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ обёртка для C-библиотеки SDL с простым менеджером 2D-сцен,
-    \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- решения задач специализации Coursera.
-  \end{itemize}
+\ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
+  % \\
+  % \begin{itemize}
+  %   \setlength{\itemindent}{2em}
+  %   \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- загрузочный сектор для x86 c выбором раздела,
+  %   \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ обёртка для C-библиотеки SDL с простым менеджером 2D-сцен,
+  %   \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- решения задач специализации Coursera.
+  % \end{itemize}
 }%
 \en{
-  My personal projects, courseworks and problem solutions can be found at \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}:
-  \\
-  \begin{itemize}
-    \setlength{\itemindent}{2em}
-    \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- x86 boot sector with partition selection menu,
-    \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ wrapper for C library SDL with a simple 2D scene manager,
-    \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- solutions for the Coursera specialization.
-  \end{itemize}
+  My personal projects, courseworks and problem solutions can be found at \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
+  % \\
+  % \begin{itemize}
+  %   \setlength{\itemindent}{2em}
+  %   \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- x86 boot sector with partition selection menu,
+  %   \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ wrapper for C library SDL with a simple 2D scene manager,
+  %   \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- solutions for the Coursera specialization.
+  % \end{itemize}
 }
 
 \cfoot{\small\textcolor{gray}{\href{https://github.com/egormkn/cv/releases}{\gitFirstTagDescribe\ (\getvariant)}}}
