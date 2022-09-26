@@ -1,3 +1,5 @@
+#!/usr/bin/env perl
+
 use File::Glob ':bsd_glob';
 
 if (exists &{'ensure_path'}) {
