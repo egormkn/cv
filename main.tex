@@ -21,6 +21,8 @@
 
 \usepackage{gitinfo2}
 \usepackage{selectiontext}
+\usepackage{xcolor}
+\usepackage{hyphenat}
 
 % Patches
 %\usepackage{xpatch}
@@ -63,7 +65,7 @@
 
 \makecvtitle
 
-\vspace*{-5mm}
+\ru{\vspace*{-5mm}}
 
 \section{%
   \ru{Образование}\en{Education}%
@@ -78,8 +80,11 @@
 }{%
   \ru{Санкт-Петербург}\en{\newline Saint Petersburg}%
 }{}{%
-  \ru{Профиль: программирование и искусственный интеллект. \\ Тема ВКР: Ускорение построения кривых перемагничивания первого порядка с использованием вычислений на видеокартах.}%
-  \en{Programming and Artificial Intelligence \\ Thesis: Accelerated plotting of first-order reversal curves using GPU computing.}%
+  \footnotesize%
+  \textcolor{darkgray}{%
+    \ru{Профиль: программирование и искусственный интеллект. \\ Тема ВКР: Ускорение построения кривых перемагничивания первого порядка с использованием вычислений на видеокартах.}%
+    \en{Programming and Artificial Intelligence \\ Thesis: Accelerated plotting of first-order reversal curves using GPU computing.}%
+  }%
 }
 
 \cventry{2015--2019}{%
@@ -91,8 +96,11 @@
 }{%
   \ru{Санкт-Петербург}\en{\newline Saint Petersburg}%
 }{}{%
-  \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
-  \en{Mathematical Models and Algorithms in Software Development \\ Thesis: Solver for the flux variance analysis problem with thermodynamical constraints based on reduction to mixed integer linear programming.}%
+  \footnotesize%
+  \textcolor{darkgray}{%
+    \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
+    \en{Mathematical Models and Algorithms in Software Development \\ Thesis: Solver for the flux variance analysis problem with thermodynamical constraints based on reduction to mixed integer linear programming.}%
+  }%
 }
 
 \subsection{%
@@ -120,13 +128,23 @@
  }
 
 \cventry{\ru{с}\en{since} 2022}{%
- \ru{Программист}\en{Software developer}%
+  \ru{Программист}\en{Software developer}%
 }{%
- \ru{ООО <<Судо>>}%
- \en{Sudo LLC}%
+  \ru{ООО <<Судо>>}%
+  \en{Sudo LLC}%
 }{}{}{%
- \ru{Разработка ПО для выполнения расчётов в области геофизики с переносом части вычислений на видеокарту (\href{https://forctool.com/}{\textbf{forctool.com}}).}%
- \en{Developing software for scientific research using GPU computing (\href{https://forctool.com/}{\textbf{forctool.com}}).}%
+  \ru{
+    \begin{enumerate}
+      \item[-] Разработал сервис для выполнения расчётов в области геофизики (\href{https://forctool.com/}{\textbf{forctool.com}}).
+      \item[-] Ускорил вычисления в 3 раза, реализовав алгоритм выбора модели регрессии на видеокарте с помощью OpenCL.
+    \end{enumerate}
+  }%
+  \en{
+    \begin{enumerate}
+      \item[-] Developed a service for geophysics research (\href{https://forctool.com/}{\textbf{forctool.com}}).
+      \item[-] Accelerated calculations by 3 times by implementing the model selection algorithm for a GPU using OpenCL.
+    \end{enumerate}
+  }%
 }
 
 \cventry{2019--2020}{%
@@ -135,8 +153,16 @@
   \ru{Международная лаборатория <<Компьютерные технологии>>, \newline Университет ИТМО}%
   \en{International Laboratory "Computer Technologies", ITMO University}%
 }{}{}{%
-  \ru{Улучшение инструментов анализа и визуализации данных.}%
-  \en{Improving data analysis and visualization tools.}%
+  \ru{
+    \begin{enumerate}
+      \item[-] Занимался улучшением инструментов для анализа и визуализации данных в биоинформатике.
+    \end{enumerate}
+  }%
+  \en{
+    \begin{enumerate}
+      \item[-] Improved the tools used in bioinformatics for data analysis and visualization.
+    \end{enumerate}
+  }%
 }
 
 \cventry{2016--2019}{%
@@ -152,47 +178,52 @@
  }
 
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Языки программирования}\en{Programming languages}: }{\faCode}}}{%
-  \textbf{C/C++} (STL, OpenCL, Qt), \textbf{Python} (NumPy, Tensorflow, PyTorch, Cython, Dask), Javascript/Typescript, Bash; \ru{также знаком с}\en{also familiar with} Java, x86 Assembly, Haskell, SQL.
+  \nohyphens{%
+    \textbf{C/C++} (STL, OpenCL, Qt), \textbf{Python} (NumPy, Tensorflow, PyTorch, Cython, Dask), \textbf{TypeScript} (Angular, NestJS); \ru{также знаком с}\en{also familiar with} Java, Bash, x86 Assembly, Haskell, SQL%
+  }%
 }
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Инструменты}\en{Tools}: }{\faTools}}}{%
   Linux, Git, Make, CMake, Docker, HTML, CSS, Markdown, LaTeX
 }
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Языки}\en{Languages}: }{\faGlobe}}}{%
   \ru{Английский язык (уровень C1 Advanced)}%
-  \en{Russian (Native), English (C1 Advanced)}%
+  \en{English (C1 Advanced), Russian (Native)}%
 }
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Знания}\en{Knowledge}: }{\faLightbulb}}}{%
-  \ru{Алгоритмы и структуры данных, многопоточное программирование, машинное обучение, нейронные сети.}%
-  \en{Algorithms and data structures, multithreading, machine learning and neural networks.}%
+  \ru{Алгоритмы и структуры данных, многопоточное программирование, машинное обучение}%
+  \en{Algorithms and data structures, multithreading, machine learning}%
 }
 \cvitem{\textcolor{color1}{\selectiontext{\ru{Опыт}\en{Experience}: }{\faSitemap}}}{%
-  \ru{Есть опыт разработки Android приложений, бэкенда на NestJS, обучения нейронных сетей, программирования для Arduino, создания расширений для браузера и VSCode.}%
-  \en{I have an experience in developing Android applications, backend development with NestJS framework, training neural networks, working with Arduino, developing extensions for web browsers and VSCode.}%
+  \ru{Есть опыт разработки фронтенда на Angular, бэкенда на NestJS, обучения нейронных сетей, программирования для Arduino, создания Android приложений, расширений для браузера и VSCode.}%
+  \en{I have an experience in fullstack development with Angular and NestJS frameworks, training deep neural networks, creating DIY projects with Arduino, developing Android applications, extensions for web browsers and VSCode.}%
+  \linebreak\linebreak
+  \ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}}%
+  \en{My personal projects, courseworks and problem solutions can be found at \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}}%
 }
 
-\section{%
-  \ru{Проекты}\en{Projects}%
- }\closesection
+% \section{%
+%   \ru{Проекты}\en{Projects}%
+%  }\closesection
 
-\ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
-  % \\
-  % \begin{itemize}
-  %   \setlength{\itemindent}{2em}
-  %   \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- загрузочный сектор для x86 c выбором раздела,
-  %   \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ обёртка для C-библиотеки SDL с простым менеджером 2D-сцен,
-  %   \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- решения задач специализации Coursera.
-  % \end{itemize}
-}%
-\en{
-  My personal projects, courseworks and problem solutions can be found at \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
-  % \\
-  % \begin{itemize}
-  %   \setlength{\itemindent}{2em}
-  %   \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- x86 boot sector with partition selection menu,
-  %   \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ wrapper for C library SDL with a simple 2D scene manager,
-  %   \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- solutions for the Coursera specialization.
-  % \end{itemize}
-}
+% \ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
+%   % \\
+%   % \begin{itemize}
+%   %   \setlength{\itemindent}{2em}
+%   %   \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- загрузочный сектор для x86 c выбором раздела,
+%   %   \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ обёртка для C-библиотеки SDL с простым менеджером 2D-сцен,
+%   %   \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- решения задач специализации Coursera.
+%   % \end{itemize}
+% }%
+% \en{
+%   My personal projects, courseworks and problem solutions can be found at \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
+%   % \\
+%   % \begin{itemize}
+%   %   \setlength{\itemindent}{2em}
+%   %   \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- x86 boot sector with partition selection menu,
+%   %   \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ wrapper for C library SDL with a simple 2D scene manager,
+%   %   \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- solutions for the Coursera specialization.
+%   % \end{itemize}
+% }
 
 \cfoot{\small\textcolor{gray}{\href{https://github.com/egormkn/cv/releases}{\gitFirstTagDescribe\ (\getvariant)}}}
 
