@@ -6,7 +6,7 @@ jobs:
     container: texlive/texlive:latest
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
         with:
           submodules: true
 
@@ -19,7 +19,7 @@ jobs:
         run: latexmk
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: pdf
           path: build/*.pdf
@@ -30,12 +30,12 @@ jobs:
     needs: [build]
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v8
         with:
           name: pdf
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: "*.pdf"
         env:
