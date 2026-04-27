@@ -15,6 +15,9 @@ jobs:
           find /usr/local/texlive -name 'texlive-fontconfig.conf' -exec ln -s {} /etc/fonts/conf.d/09-texlive-fonts.conf \;
           fc-cache
 
+      - name: Generate gitinfo2 data
+        run: perl gitinfo2.pm
+
       - name: Build PDF documents with latexmk
         run: latexmk
 

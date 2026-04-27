@@ -18,7 +18,7 @@
 
 sub gitinfo2 {
 
-  my $RELEASE_MATCHER = "[0-9]*.*";
+  my $RELEASE_MATCHER = "v?[0-9]*.*";
 
   if (%GI2TM_OPTIONS) {
     if (exists $GI2TM_OPTIONS{"RELEASE_MATCHER"}) {
