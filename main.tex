@@ -66,7 +66,7 @@
 \usepackage{xcolor}
 \usepackage{hyphenat}
 
-\usepackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+\usepackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=2cm]{geometry}
 \setlength{\hintscolumnwidth}{\widthof{\small{} 0000--0000 }}
 
 \usepackage{enumitem}
@@ -102,7 +102,7 @@
 }
 
 \title{%
-    \ru{Разработчик C++\,/\,Python}\en{Software Developer (C++\,/\,Python)}%
+    \ru{C++\,/\,Python разработчик}\en{C++\,/\,Python Software Developer}%
 }
 
 \phone[mobile]{+7~(999)~203~83~35}
@@ -121,7 +121,7 @@
 
 \makecvtitle
 
-% \vspace*{-2em}
+\vspace*{-1.5em}
 
 \section{%
   \ru{Опыт работы}%
@@ -138,12 +138,12 @@
 }{}{}{%
   \ru{
     \begin{itemize}
-      \item Занимался разработкой и поддержкой ROS-нод (C++, OpenCV) для калибровки внутренних параметров камер и лидаров на роботакси и роботах-курьерах.
+      \item Разрабатывал и поддерживал ROS-ноды на C++ с использованием OpenCV для калибровки внутренних параметров камер и лидаров на роботакси и роботах-курьерах.
       \item Писал код на Go с использованием Protobuf-сообщений для конфигурации пайплайна.
-      \item Разрабатывал инструменты на Python для отладки кода, анализа и визуализации данных, используя Boost.Python для генерации биндингов к коду на C++.
+      \item Создал инструменты на Python для отладки кода, анализа и визуализации данных с~применением Boost.Python для генерации биндингов к коду на C++.
       \item Писал unit-тесты с помощью Google Test, Pytest и Hypothesis.
       \item Проводил эксперименты для создания методики калибровки лидаров.
-      \item Оптимизировал архитектуру сервисов, настроил процесс сбора данных о калибровках.
+      \item Переработал архитектуру сервисов и настроил автоматический сбор данных, упростив анализ качества и сделав процесс воспроизводимым.
     \end{itemize}
   }%
   \en{
@@ -153,7 +153,7 @@
       \item Developed Python tools for debugging, data visualization and analysis using Boost.Python for generating bindings to C++ code.
       \item Wrote unit tests using Google Test, Pytest and Hypothesis.
       \item Performed experiments to develop a calibration method for lidars.
-      \item Optimized architecture of services, set up data collection process for camera calibrations.
+      \item Redesigned the service architecture and set up automatic data collection, simplifying quality analysis and making the process reproducible.
     \end{itemize}
   }%
 }
@@ -225,7 +225,7 @@
   \en{MSc, Applied Mathematics and Computer Science}%
 }{}{}{}{%
   \footnotesize\textcolor{darkgray}{%
-    \ru{Профиль: программирование и искусственный интеллект. \\ Тема ВКР: Ускорение построения кривых перемагничивания первого порядка с использованием вычислений на видеокартах.}%
+    \ru{Профиль: программирование и искусственный интеллект. \\ Тема ВКР: Ускорение построения кривых FORC с использованием вычислений на видеокартах.}%
     \en{Programming and Artificial Intelligence \\ Thesis: Accelerating calculations of first-order reversal curves using GPU computing.}%
   }%
 }
@@ -237,8 +237,8 @@
 }{%
 }{}{%
   \footnotesize\textcolor{darkgray}{%
-    \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
-    \en{Mathematical Models and Algorithms in Software Development \\ Thesis: Solver for the flux variance analysis problem with thermodynamical constraints based on reduction to mixed integer linear programming.}%
+    \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи FVA на основе сведения к целочисленному линейному программированию.}%
+    \en{Mathematical Models and Algorithms in Software Development \\ Thesis: Solver for the FVA problem based on the reduction to mixed integer linear programming.}%
   }%
 }
 
@@ -282,72 +282,49 @@
   }%
 }{
   \nohyphens{
-    \textbf{C/C++} (STL, Boost, OpenCV, OpenCL, GTest),
-    \textbf{Python} (NumPy, Numba, Dask, PyTorch, Tensorflow, Cython, FastAPI, SQLAlchemy),
-    \textbf{TypeScript} (React, Redux, NextJS, NestJS, Angular);
-    \ru{также знаком с}\en{also familiar with} Go, Java, Bash, x86 Assembly, SQL, Haskell
+    \ru{Основной стек}\en{Main development stack}: \textbf{C++} (STL, Boost, OpenCV, OpenCL, GTest, CMake, vcpkg, ROS, Arduino),\\
+    \textbf{Python} (NumPy, Numba, Dask, Cython, FastAPI, Pydantic, SQLAlchemy, Poetry, Matplotlib, Plotly).\vspace{5pt}\\
+    %
+    \ru{Дополнительно есть опыт веб-разработки на}\en{Additional expertise in web development with} \textbf{TypeScript} (React, Redux, Next.js, NestJS), \textbf{HTML}, \textbf{CSS};\\
+    \ru{опыт использования}\en{had some experience with} \textbf{Go}, \textbf{Java}, \textbf{Bash}, \textbf{SQL}, \textbf{x86 Assembly} \ru{в рабочих и учебных задачах}\en{for work and study projects}.
   }
 }
 
 \cvwideitem{%
-  \symbolwithtext{\color{color1}\faTools}{%
-    % \ru{Инструменты:}%
-    % \en{Tools:}%
+  \symbolwithtext{\color{color1}\faSitemap}{%
+    % \ru{Опыт}\en{Experience}:%
   }%
-}{%
-  Linux, Git, Docker, Nginx, Make, CMake, Vcpkg, Poetry, HTML, CSS, LaTeX
+}{
+  \ru{Знаком с основными \textbf{алгоритмами и структурами данных}, методами \textbf{машинного обучения}, есть опыт подготовки датасетов и обучения нейросетей с фреймворками }%
+  \en{I am familiar with basic \textbf{algorithms and data structures}, methods of \textbf{machine learning}, have an experience preparing datasets and training neural networks with }\textbf{PyTorch} \ru{и}\en{and} \textbf{TensorFlow}.%
 }
 
 \cvwideitem{%
-  \symbolwithtext{\color{color1}\faGlobe}{%
-    % \ru{Языки:}%
-    % \en{Languages:}%
+  \symbolwithtext{\color{color1}\faTools}{%
+    % \ru{Инструменты}\en{Tools}:%
   }%
 }{%
-  \ru{Английский язык -- C1 (Advanced)}%
-  \en{English -- C1, Russian -- native}%
+  \ru{Использую}\en{I use} \textbf{Linux}, \textbf{Git}, \textbf{Docker}, \textbf{VSCode}, \ru{осваиваю применение AI-агентов в разработке}\en{and I am learning to use AI agents for development}.%
 }
 
-% \cvwideitem{%
-%   \color{color1}
-%   \selectiontext{
-%     \ru{Знания:}\en{Knowledge:}
-%   }{\faLightbulb}%
-% }{%
-%   \ru{Fullstack-разработка, алгоритмы и структуры данных, многопоточное программирование, машинное обучение}%
-%   \en{Algorithms and data structures, multithreading, machine learning}%
-% }
+\cvwideitem{%
+  \symbolwithtext{\color{color1}\faGlobeAmericas}{%
+    % \ru{Языки}\en{Languages}:%
+  }%
+}{%
+  \ru{\textbf{Английский} -- C1 (Advanced)}%
+  \en{\textbf{English} -- C1, \textbf{Russian} -- native}%
+}
 
-% \cvwideitem{%
-%   \color{color1}
-%   \selectiontext{
-%     \ru{Опыт:}\en{Experience:}
-%   }{\faSitemap}%
-% }{%
-%   \ru{Есть опыт fullstack-разработки, обучения нейронных сетей, программирования для Arduino, создания Android приложений, расширений для браузера и VSCode.}%
-%   \en{I have an experience in fullstack development, training deep neural networks, creating DIY projects with Arduino, developing Android applications, extensions for web browsers and VSCode.}%
-% }
+\rhead{%
+  \vspace{10px}\color{color2}%
+  \ru{\href{https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-en.pdf}{EN} | \textcolor{color1}{RU}}%
+  \en{\textcolor{color1}{EN} | \href{https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-ru.pdf}{RU}}%
+}
 
-% \section{%
-%   \ru{Проекты}\en{Projects}%
-% }
-
-% \ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}%
-%   \begin{itemize}
-%     \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- загрузочный сектор для x86 c выбором раздела,
-%     \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ обёртка для C-библиотеки SDL с простым менеджером 2D-сцен,
-%     \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- решения задач специализации Coursera.
-%   \end{itemize}
-% }%
-% \en{
-%   My personal projects, courseworks and problem solutions can be found at \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
-%   \begin{itemize}
-%     \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- x86 boot sector with partition selection menu,
-%     \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ wrapper for C library SDL with a simple 2D scene manager,
-%     \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- solutions for the Coursera specialization.
-%   \end{itemize}
-% }
-
-\cfoot{\small\color{gray}\href{https://github.com/egormkn/cv/releases}{github.com/egormkn/cv \gitFirstTagDescribe\ (\getvariant)}}
+\cfoot{%
+  \small\color{gray}%
+  \href{https://github.com/egormkn/cv/tags}{github.com/egormkn/cv}~\textbullet~\gitFirstTagDescribe\ (\getvariant)%
+}
 
 \end{document}
