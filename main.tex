@@ -9,6 +9,9 @@
 % \moderncvbody[]{1}
 % \moderncvfoot{1}
 
+\renewcommand*{\titlefont}{\LARGE\mdseries\upshape}
+\renewcommand*{\addressfont}{\small\mdseries\upshape}
+
 \colorlet{firstnamecolor}{black}
 \colorlet{lastnamecolor}{black}
 
@@ -18,11 +21,36 @@
 \definecolor{linkedin}{HTML}{0a66c2}
 \definecolor{telegram}{HTML}{337AB7}
 
-\renewcommand*{\mobilephonesymbol}        {{\color{mobilephone}\small\selectiontext{\ru{Телефон:}\en{Phone:}}{\faMobile*}}}
-\renewcommand*{\emailsymbol}              {{\color{email}\small\selectiontext{Email: }{\faEnvelope[regular]}}}
-\renewcommand*{\githubsocialsymbol}       {{\color{github}\small\selectiontext{GitHub: }{\faGithub}}}
-\renewcommand*{\linkedinsocialsymbol}     {{\color{linkedin}\small\selectiontext{LinkedIn: }{\faLinkedin}}}
-\renewcommand*{\telegramsocialsymbol}     {{\color{telegram}\small\selectiontext{Telegram: }{\faTelegram}}}
+\usepackage{transparent}
+\usepackage{adjustbox}
+\usepackage{accsupp}
+
+\newcommand{\squelch}[1]{%
+  \protect\BeginAccSupp{method=plain,ActualText={}}#1\protect\EndAccSupp{}}
+
+\newcommand{\selectiontext}[2]{%
+  \protect\BeginAccSupp{method=pdfstringdef,ActualText={#1}}#2\protect\EndAccSupp{}}
+
+\newcommand{\invisibletext}[1]{%
+  \pdfliteral direct {3 Tr}%
+  #1%
+  \pdfliteral direct {0 Tr}%
+}
+
+\newcommand{\symbolwithtext}[3][left]{%
+  \selectiontext{#3}{%
+    {#2}%
+    \llap{%
+      \transparent{0}{\textcolor{black!0}{#3}}%
+    }%
+  }%
+}
+
+\renewcommand*{\mobilephonesymbol}    {\symbolwithtext{\small\color{mobilephone}\faMobile*}{Phone:}}
+\renewcommand*{\emailsymbol}          {\symbolwithtext{\small\color{email}\faEnvelope[regular]}{Email:}}
+\renewcommand*{\githubsocialsymbol}   {\symbolwithtext{\small\color{github}\faGithub}{GitHub:}}
+\renewcommand*{\linkedinsocialsymbol} {\symbolwithtext{\small\color{linkedin}\faLinkedin}{LinkedIn:}}
+\renewcommand*{\telegramsocialsymbol} {\symbolwithtext{\small\color{telegram}\faTelegram}{Telegram:}}
 
 \usepackage[ru, en]{variants}
 
@@ -35,10 +63,8 @@
 \usepackage[defaultsans]{droidsans}
 
 \usepackage{gitinfo2}
-\usepackage{selectiontext}
 \usepackage{xcolor}
 \usepackage{hyphenat}
-% \usepackage{fontsize}
 
 \usepackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
 \setlength{\hintscolumnwidth}{\widthof{\small{} 0000--0000 }}
@@ -250,11 +276,10 @@
 }
 
 \cvwideitem{%
-  \color{color1}
-  \selectiontext{
-    \ru{Языки программирования:}
-    \en{Programming languages:}
-  }{\faCode}%
+  \symbolwithtext{\color{color1}\faCode}{%
+    % \ru{Языки программирования:}%
+    % \en{Programming languages:}%
+  }%
 }{
   \nohyphens{
     \textbf{C/C++} (STL, Boost, OpenCV, OpenCL, GTest),
@@ -265,21 +290,19 @@
 }
 
 \cvwideitem{%
-  \color{color1}
-  \selectiontext{
-    \ru{Инструменты:}
-    \en{Tools:}
-  }{\faTools}%
+  \symbolwithtext{\color{color1}\faTools}{%
+    % \ru{Инструменты:}%
+    % \en{Tools:}%
+  }%
 }{%
   Linux, Git, Docker, Nginx, Make, CMake, Vcpkg, Poetry, HTML, CSS, LaTeX
 }
 
 \cvwideitem{%
-  \color{color1}
-  \selectiontext{
-    \ru{Языки:}
-    \en{Languages:}
-  }{\faGlobe}%
+  \symbolwithtext{\color{color1}\faGlobe}{%
+    % \ru{Языки:}%
+    % \en{Languages:}%
+  }%
 }{%
   \ru{Английский язык -- C1 (Advanced)}%
   \en{English -- C1, Russian -- native}%
