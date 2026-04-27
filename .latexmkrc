@@ -8,7 +8,7 @@ if (exists &{'ensure_path'}) {
   $ENV{'TEXINPUTS'} = '.:./moderncv//:';
 }
 $ENV{'TZ'} = 'Europe/Moscow';
-$pdf_mode = 5;
+$pdf_mode = 1;
 $dvi_mode = $postscript_mode = 0;
 $out_dir = 'build';
 @default_files = bsd_glob('cv-*.tex');
