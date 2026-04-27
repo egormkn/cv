@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!/moderncv
+!/.git
+!/.latexmkrc
+!/**/*.jpg
+!/**/*.pm
+!/**/*.sty
+!/**/*.tex
