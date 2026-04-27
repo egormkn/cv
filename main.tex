@@ -1,10 +1,28 @@
 \PassOptionsToPackage{fixed}{fontawesome5}
 
-\documentclass[11pt, a4paper, sans, nolmodern]{moderncv}
+\documentclass[11pt, a4paper, sans]{moderncv}
 
-\moderncvstyle{classic}
 \moderncvcolor{blue}
-\moderncvicons{awesome-color}
+\moderncvstyle[]{classic}
+
+% \moderncvhead{1}
+% \moderncvbody[]{1}
+% \moderncvfoot{1}
+
+\colorlet{firstnamecolor}{black}
+\colorlet{lastnamecolor}{black}
+
+\colorlet{mobilephone}{color1}
+\colorlet{email}{color1}
+\definecolor{github}{HTML}{24292E}
+\definecolor{linkedin}{HTML}{0a66c2}
+\definecolor{telegram}{HTML}{337AB7}
+
+\renewcommand*{\mobilephonesymbol}        {{\color{mobilephone}\small\selectiontext{\ru{Телефон:}\en{Phone:}}{\faMobile*}}}
+\renewcommand*{\emailsymbol}              {{\color{email}\small\selectiontext{Email: }{\faEnvelope[regular]}}}
+\renewcommand*{\githubsocialsymbol}       {{\color{github}\small\selectiontext{GitHub: }{\faGithub}}}
+\renewcommand*{\linkedinsocialsymbol}     {{\color{linkedin}\small\selectiontext{LinkedIn: }{\faLinkedin}}}
+\renewcommand*{\telegramsocialsymbol}     {{\color{telegram}\small\selectiontext{Telegram: }{\faTelegram}}}
 
 \usepackage[ru, en]{variants}
 
@@ -16,17 +34,29 @@
 \usepackage[default]{droidserif}
 \usepackage[defaultsans]{droidsans}
 
-\usepackage[left=2cm, right=2cm, top=2cm, bottom=2.25cm]{geometry}
-\setlength{\hintscolumnwidth}{2cm}
-
 \usepackage{gitinfo2}
 \usepackage{selectiontext}
 \usepackage{xcolor}
 \usepackage{hyphenat}
+% \usepackage{fontsize}
+
+\usepackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry}
+\setlength{\hintscolumnwidth}{\widthof{\small{} 0000--0000 }}
+
+\usepackage{enumitem}
+\setlist{align=left, leftmargin=!, labelindent=0px, itemsep=0px, parsep=0px}
+
+\renewcommand{\labelitemi}{--}
+
+\newcommand*{\cvwideitem}[3][0em]{%
+  \begin{itemize}[labelwidth=\widthof{#2}, topsep=2px]
+    \item[#2] #3
+  \end{itemize}
+}
 
 % Patches
-%\usepackage{xpatch}
-%\xpatchcmd{\makecvhead}{\\[2.5em]}{\\}{}{}
+% \usepackage{xpatch}
+% \xpatchcmd{\makecvhead}{\\[2.5em]}{\\}{}{}
 
 \AtEndPreamble{
 \hypersetup{
@@ -36,7 +66,7 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                    TITLE                                     %
+%                                     HEAD                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \name{%
@@ -46,16 +76,16 @@
 }
 
 \title{%
-    \ru{Разработчик C++/Python}\en{Software Developer (C++/Python)}%
+    \ru{Разработчик C++\,/\,Python}\en{Software Developer (C++\,/\,Python)}%
 }
 
-\email{egormkn@yandex.ru}
 \phone[mobile]{+7~(999)~203~83~35}
+\email{egormkn@yandex.ru}
+% \homepage{https://egor.cc}
+\social[telegram]{EgorMakarenko}
 \social[linkedin]{EgorMakarenko}
 \social[github]{egormkn}
-\social[telegram]{egormkn}
-% \extrainfo{Some info}
-\photo[58pt][0.2pt]{photo}
+\photo[58pt][1pt]{photo}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    CONTENT                                   %
@@ -65,132 +95,148 @@
 
 \makecvtitle
 
-\ru{\vspace*{-5mm}}
+% \vspace*{-2em}
 
 \section{%
   \ru{Опыт работы}%
   \en{Work experience}%
- }
+}
 
-\cventry{\ru{с}\en{since} 2024}{%
-  \ru{Разработчик}\en{Software developer}%
+\cventry{\small{}\ru{с}\en{since} 2024}{%
+  \ru{Разработчик ПО}\en{Software developer}%
 }{%
-  \ru{Яндекс Автономный транспорт}%
-  \en{Yandex Self-driving group}%
+  \href{https://autonomy.yandex.ru/}{%
+    \ru{Яндекс Автономный транспорт}%
+    \en{Yandex Self-Driving Group LLC}%
+  }%
 }{}{}{%
   \ru{
-    \begin{enumerate}
-      \item[-] Занимался разработкой, рефакторингом и поддержкой ROS-нод (C++, OpenCV) для калибровки внутренних параметров камер и лидаров на роботакси.
-      \item[-] Проводил эксперименты для создания методики калибровки лидаров.
-      \item[-] Разрабатывал инструменты для отладки и визуализации данных.
-    \end{enumerate}
+    \begin{itemize}
+      \item Занимался разработкой и поддержкой ROS-нод (C++, OpenCV) для калибровки внутренних параметров камер и лидаров на роботакси и роботах-курьерах.
+      \item Писал код на Go с использованием Protobuf-сообщений для конфигурации пайплайна.
+      \item Разрабатывал инструменты на Python для отладки кода, анализа и визуализации данных, используя Boost.Python для генерации биндингов к коду на C++.
+      \item Писал unit-тесты с помощью Google Test, Pytest и Hypothesis.
+      \item Проводил эксперименты для создания методики калибровки лидаров.
+      \item Оптимизировал архитектуру сервисов, настроил процесс сбора данных о калибровках.
+    \end{itemize}
   }%
   \en{
-    \begin{enumerate}
-      \item[-] Developed and supported ROS nodes (C++, OpenCV) for calibrating intrinsic parameters of cameras and lidars on a robotaxi.
-      \item[-] Performed experiments to create a calibration method for lidars.
-      \item[-] Developed tools for debugging and data visualization.
-    \end{enumerate}
+    \begin{itemize}
+      \item Developed and supported ROS nodes (C++, OpenCV) for calibrating intrinsic parameters of cameras and lidars on robotaxi and delivery robots.
+      \item Wrote code in Go using Protobuf messages for configuration of the pipeline.
+      \item Developed Python tools for debugging, data visualization and analysis using Boost.Python for generating bindings to C++ code.
+      \item Wrote unit tests using Google Test, Pytest and Hypothesis.
+      \item Performed experiments to develop a calibration method for lidars.
+      \item Optimized architecture of services, set up data collection process for camera calibrations.
+    \end{itemize}
   }%
 }
 
-\cventry{2022--2024}{%
-  \ru{Разработчик}\en{Software developer}%
+\cventry{\small{}2022--2024}{%
+  \ru{Fullstack-разработчик}\en{Fullstack developer}%
 }{%
-  \ru{Судо}%
-  \en{Sudo LLC}%
+  \href{https://sudo.team/}{%
+    \ru{Sudo}%
+    \en{Sudo LLC}%
+  }
 }{}{}{%
   \ru{
-    \begin{enumerate}
-      \item[-] Разрабатывал веб-сервисы на FastAPI, React, Jupyter Widgets для анализа данных в области геофизики.
-      \item[-] Оптимизировал вычисления с помощью NumPy, Numba, Dask, OpenCL.
-      \item[-] Настроил CI/CD пайплайны (сборка, тесты, деплой) c GitLab CI и Docker Compose.
-      \item[-] Проводил технические консультации для студентов, проходящих практику и выполняющих дипломную работу в компании.
-    \end{enumerate}
+    \begin{itemize}
+      \item Разрабатывал веб-сервисы на FastAPI, Jupyter Widgets, React, Redux для анализа данных в~области геофизики.
+      \item Оптимизировал вычисления с помощью NumPy, Numba и Dask.
+      \item Использовал OpenCL для переноса части расчётов на GPU.
+      \item Настроил CI/CD пайплайны (сборка, тесты, деплой) с GitLab CI, Docker Compose и Nginx-Proxy.
+      \item Проводил технические консультации для студентов, проходящих практику и выполняющих дипломную работу в компании.
+    \end{itemize}
   }%
   \en{
-    \begin{enumerate}
-      \item[-] Developed web-services using FastAPI, React, Jupyter Widgets for performing scientific data analysis in geophysics.
-      \item[-] Optimized calculations using NumPy, Numba, Dask, OpenCL.
-      \item[-] Set up CI/CD pipelines (build, tests, deploy) with GitLab CI and Docker Compose.
-      \item[-] Provided technical consultations for students taking internships and completing their thesis at the company.
-    \end{enumerate}
+    \begin{itemize}
+      \item Developed web-services using FastAPI, Jupyter Widgets, React, Redux for performing scientific data analysis in geophysics.
+      \item Accelerated calculations using NumPy, Numba, Dask.
+      \item Used OpenCV to transfer some computations to the GPU.
+      \item Set up CI/CD pipelines (build, tests, deploy) with GitLab CI, Docker Compose and Nginx-Proxy.
+      \item Provided technical consultations for students taking internships and completing their thesis at the company.
+    \end{itemize}
   }%
 }
 
-\cventry{2019--2020}{%
+\cventry{\small{}2019--2020}{%
   \ru{Стажёр-исследователь}\en{Researcher Intern}%
 }{%
-  \ru{Университет ИТМО \newline Международная лаборатория <<Компьютерные технологии>>}%
-  \en{ITMO University \newline International Laboratory "Computer Technologies"}%
+  \ru{%
+    \fontsize{10.5pt}{10.5pt}\selectfont{}%
+    \href{https://itmo.ru/}{Университет ИТМО}, \href{https://ctlab.ifmo.ru/}{Лаборатория <<Компьютерные технологии>>}%
+  }%
+  \en{%
+    \href{https://en.itmo.ru/}{ITMO University}, \href{https://ctlab.ifmo.ru/}{International Laboratory "Computer Technologies"}%
+  }%
 }{}{}{%
   \ru{
-    \begin{enumerate}
-      \item[-] Занимался разработкой инструментов для анализа и визуализации данных в биоинформатике.
-    \end{enumerate}
+    \begin{itemize}
+      \item Разрабатывал инструменты на Java для анализа и визуализации данных в биоинформатике.
+      \item Исследовал способы решения задачи анализа вариации потока с помощью CPLEX.
+    \end{itemize}
   }%
   \en{
-    \begin{enumerate}
-      \item[-] Developed the tools used for data analysis and visualization in bioinformatics.
-    \end{enumerate}
+    \begin{itemize}
+      \item Developed tools in Java used for data analysis and visualization in bioinformatics.
+      \item Researched solutions to the flux variance analysis problem using CPLEX.
+    \end{itemize}
   }%
 }
-
-% \cventry{2016--2019}{%
-%   \ru{Волонтёр}\en{Volunteer}%
-% }{%
-%   \ru{Командные олимпиады по программированию (NEERC, ВКОШП), Университет ИТМО}%
-%   \en{Northeastern European Regional Contest, ITMO University}%
-% }{}{}{}
 
 \section{%
   \ru{Образование}\en{Education}%
- }
+}
 
-\cventry{2019--2022}{%
+\subsection{%
+  \ru{\fontsize{11.5pt}{11.5pt}\selectfont{}\textbf{\href{https://itmo.ru/}{Университет ИТМО}}, \href{https://itmo.ru/ru/viewfaculty/7/}{Факультет информационных технологий и программирования}}%
+  \en{\textbf{\href{https://en.itmo.ru/}{ITMO University}}, \href{https://en.itmo.ru/en/faculty/7/}{Information Technologies and Programming Faculty}}%
+}
+
+\cventry{\small{}2019--2022}{%
   \ru{Магистратура, Прикладная математика и информатика}%
   \en{MSc, Applied Mathematics and Computer Science}%
-}{%
-  \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
-  \en{\newline Information Technologies and Programming Faculty, ITMO University}%
-}{%
-  \ru{Санкт-Петербург}\en{\newline Saint Petersburg}%
-}{}{%
-  \footnotesize%
-  \textcolor{darkgray}{%
+}{}{}{}{%
+  \footnotesize\textcolor{darkgray}{%
     \ru{Профиль: программирование и искусственный интеллект. \\ Тема ВКР: Ускорение построения кривых перемагничивания первого порядка с использованием вычислений на видеокартах.}%
-    \en{Programming and Artificial Intelligence \\ Thesis: Accelerated plotting of first-order reversal curves using GPU computing.}%
+    \en{Programming and Artificial Intelligence \\ Thesis: Accelerating calculations of first-order reversal curves using GPU computing.}%
   }%
 }
 
-\cventry{2015--2019}{%
+\cventry{\small{}2015--2019}{%
   \ru{Бакалавриат, Прикладная математика и информатика}%
   \en{BSc, Applied Mathematics and Computer Science}%
 }{%
-  \ru{\newline факультет информационных технологий и программирования, \newline Университет ИТМО}%
-  \en{\newline Information Technologies and Programming Faculty, ITMO University}%
 }{%
-  \ru{Санкт-Петербург}\en{\newline Saint Petersburg}%
 }{}{%
-  \footnotesize%
-  \textcolor{darkgray}{%
+  \footnotesize\textcolor{darkgray}{%
     \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи анализа вариации потока с термодинамическими ограничениями на основе сведения к целочисленному линейному программированию.}%
     \en{Mathematical Models and Algorithms in Software Development \\ Thesis: Solver for the flux variance analysis problem with thermodynamical constraints based on reduction to mixed integer linear programming.}%
   }%
 }
 
 \subsection{%
-  \ru{Дополнительные курсы}%
-  \en{Additional courses}%
+  \ru{Дополнительное обучение}%
+  \en{Extra courses}%
+}
+
+\cvitem{%
+  \ru{\href{https://shad.yandex.ru/}{ШАД}:}%
+  \en{\href{https://dataschool.yandex.com/}{YSDA}:}%
+}{%
+  \ru{Курсы <<\textbf{Язык C++}>>, <<\textbf{Parallel and Concurrent Programming}>> (2025) --- Яндекс}%
+  \en{Courses <<\textbf{C++ Language}>>, <<\textbf{Parallel and Concurrent Programming}>> (2025) --- Yandex}%
 }
 
 \cvitem{Coursera:}{%
-  \ru{Специализация <<\textbf{Искусство разработки на современном C++}>> --- Яндекс, МФТИ}%
-  \en{Specialization "\textbf{Modern C++ Development}" --- Yandex, MIPT}%
+  \ru{Специализация \href{https://www.coursera.org/specializations/c-plus-plus-modern-development}{<<\textbf{Искусство разработки на современном C++}>>} --- Яндекс, МФТИ}%
+  \en{Specialization "\href{https://www.coursera.org/specializations/c-plus-plus-modern-development}{\textbf{The Art of Modern C++ Development}}" --- Yandex, MIPT}%
 }
 
 \cvitem{SPTDC:}{%
-  Summer school on practice and theory of distributed computing, 2019 --- JUG Ru%
+  \ru{\href{https://lp.jetbrains.com/sptdc-2023/archive-2019/}{Летняя школа практики и теории распределённых вычислений (2019)} --- JUG Ru}%
+  \en{\href{https://lp.jetbrains.com/sptdc-2023/archive-2019/}{Summer school on practice and theory of distributed computing (2019)} --- JUG Ru}%
 }
 
 % \cvitem{\ru{Книги}\en{Books}:}{%
@@ -201,53 +247,84 @@
 \section{%
   \ru{Профессиональные навыки}%
   \en{Professional skills}%
- }
-
-\cvitem{\textcolor{color1}{\selectiontext{\ru{Языки программирования}\en{Programming languages}: }{\faCode}}}{%
-  \nohyphens{%
-    \textbf{C/C++} (STL, OpenCV, OpenCL), \textbf{Python} (NumPy, Numba, Dask, PyTorch, Tensorflow, Cython, FastAPI, SQLAlchemy), \textbf{TypeScript} (React, Redux, NextJS, NestJS, Angular);\linebreak \ru{также знаком с}\en{also familiar with} Go, Java, Bash, x86 Assembly, SQL, Haskell%
-  }%
 }
-\cvitem{\textcolor{color1}{\selectiontext{\ru{Инструменты}\en{Tools}: }{\faTools}}}{%
+
+\cvwideitem{%
+  \color{color1}
+  \selectiontext{
+    \ru{Языки программирования:}
+    \en{Programming languages:}
+  }{\faCode}%
+}{
+  \nohyphens{
+    \textbf{C/C++} (STL, Boost, OpenCV, OpenCL, GTest),
+    \textbf{Python} (NumPy, Numba, Dask, PyTorch, Tensorflow, Cython, FastAPI, SQLAlchemy),
+    \textbf{TypeScript} (React, Redux, NextJS, NestJS, Angular);
+    \ru{также знаком с}\en{also familiar with} Go, Java, Bash, x86 Assembly, SQL, Haskell
+  }
+}
+
+\cvwideitem{%
+  \color{color1}
+  \selectiontext{
+    \ru{Инструменты:}
+    \en{Tools:}
+  }{\faTools}%
+}{%
   Linux, Git, Docker, Nginx, Make, CMake, Vcpkg, Poetry, HTML, CSS, LaTeX
 }
-\cvitem{\textcolor{color1}{\selectiontext{\ru{Языки}\en{Languages}: }{\faGlobe}}}{%
-  \ru{Английский язык (уровень C1 Advanced)}%
-  \en{English (C1 Advanced), Russian (Native)}%
+
+\cvwideitem{%
+  \color{color1}
+  \selectiontext{
+    \ru{Языки:}
+    \en{Languages:}
+  }{\faGlobe}%
+}{%
+  \ru{Английский язык -- C1 (Advanced)}%
+  \en{English -- C1, Russian -- native}%
 }
-% \cvitem{\textcolor{color1}{\selectiontext{\ru{Знания}\en{Knowledge}: }{\faLightbulb}}}{%
+
+% \cvwideitem{%
+%   \color{color1}
+%   \selectiontext{
+%     \ru{Знания:}\en{Knowledge:}
+%   }{\faLightbulb}%
+% }{%
 %   \ru{Fullstack-разработка, алгоритмы и структуры данных, многопоточное программирование, машинное обучение}%
 %   \en{Algorithms and data structures, multithreading, machine learning}%
 % }
-\cvitem{\textcolor{color1}{\selectiontext{\ru{Опыт}\en{Experience}: }{\faSitemap}}}{%
-  \ru{Есть опыт fullstack-разработки, обучения нейронных сетей, программирования для Arduino, создания Android приложений, расширений для браузера и VSCode.}%
-  \en{I have an experience in fullstack development, training deep neural networks, creating DIY projects with Arduino, developing Android applications, extensions for web browsers and VSCode.}%
-}
+
+% \cvwideitem{%
+%   \color{color1}
+%   \selectiontext{
+%     \ru{Опыт:}\en{Experience:}
+%   }{\faSitemap}%
+% }{%
+%   \ru{Есть опыт fullstack-разработки, обучения нейронных сетей, программирования для Arduino, создания Android приложений, расширений для браузера и VSCode.}%
+%   \en{I have an experience in fullstack development, training deep neural networks, creating DIY projects with Arduino, developing Android applications, extensions for web browsers and VSCode.}%
+% }
 
 % \section{%
 %   \ru{Проекты}\en{Projects}%
-%  }\closesection
+% }
 
-% \ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
-%   % \\
-%   % \begin{itemize}
-%   %   \setlength{\itemindent}{2em}
-%   %   \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- загрузочный сектор для x86 c выбором раздела,
-%   %   \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ обёртка для C-библиотеки SDL с простым менеджером 2D-сцен,
-%   %   \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- решения задач специализации Coursera.
-%   % \end{itemize}
+% \ru{Мои личные проекты, курсовые работы и решения задач можно найти на \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}%
+%   \begin{itemize}
+%     \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- загрузочный сектор для x86 c выбором раздела,
+%     \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ обёртка для C-библиотеки SDL с простым менеджером 2D-сцен,
+%     \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- решения задач специализации Coursera.
+%   \end{itemize}
 % }%
 % \en{
 %   My personal projects, courseworks and problem solutions can be found at \href{https://github.com/egormkn/}{\textbf{github.com/egormkn}}
-%   % \\
-%   % \begin{itemize}
-%   %   \setlength{\itemindent}{2em}
-%   %   \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- x86 boot sector with partition selection menu,
-%   %   \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ wrapper for C library SDL with a simple 2D scene manager,
-%   %   \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- solutions for the Coursera specialization.
-%   % \end{itemize}
+%   \begin{itemize}
+%     \item \href{https://github.com/egormkn/mbr-boot-manager}{\color{color1} mbr-boot-manager} --- x86 boot sector with partition selection menu,
+%     \item \href{https://github.com/egormkn/sdlxx}{\color{color1} SDLXX} --- С++ wrapper for C library SDL with a simple 2D scene manager,
+%     \item \href{https://github.com/egormkn/cpp-modern-development-course}{\color{color1} cpp-modern-development-course} --- solutions for the Coursera specialization.
+%   \end{itemize}
 % }
 
-\cfoot{\small\textcolor{gray}{\href{https://github.com/egormkn/cv/releases}{\gitFirstTagDescribe\ (\getvariant)}}}
+\cfoot{\small\color{gray}\href{https://github.com/egormkn/cv/releases}{github.com/egormkn/cv \gitFirstTagDescribe\ (\getvariant)}}
 
 \end{document}
