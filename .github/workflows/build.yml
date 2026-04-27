@@ -16,7 +16,9 @@ jobs:
           fc-cache
 
       - name: Generate gitinfo2 data
-        run: perl gitinfo2.pm
+        run: |
+          perl gitinfo2.pm
+          cat .git/gitHeadInfo.gin
 
       - name: Build PDF documents with latexmk
         run: latexmk
