@@ -10,6 +10,9 @@ jobs:
         with:
           submodules: true
 
+      - name: Fix checkout
+        run: git config --system --add safe.directory $GITHUB_WORKSPACE
+
       - name: Install fonts
         run: |
           find /usr/local/texlive -name 'texlive-fontconfig.conf' -exec ln -s {} /etc/fonts/conf.d/09-texlive-fonts.conf \;
