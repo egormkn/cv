@@ -3,22 +3,25 @@
 \documentclass[11pt, a4paper, sans]{moderncv}
 
 \moderncvcolor{blue}
-\moderncvstyle[]{classic}
+\moderncvstyle[top, left]{classic}
 
 % \moderncvhead{1}
 % \moderncvbody[]{1}
 % \moderncvfoot{1}
 
-\renewcommand*{\titlefont}{\LARGE\mdseries\upshape}
+\renewcommand*{\namefont}{\fontsize{26}{26}\mdseries\upshape}
+\renewcommand*{\titlefont}{\Large\mdseries\upshape}
 \renewcommand*{\addressfont}{\small\mdseries\upshape}
 
-\colorlet{firstnamecolor}{black}
-\colorlet{lastnamecolor}{black}
+\colorlet{firstnamecolor}{color0}
+\colorlet{lastnamecolor}{color0}
+\colorlet{titlecolor}{color0}
+\colorlet{introcolor}{color2}
 
 \colorlet{mobilephone}{color1}
 \colorlet{email}{color1}
 \definecolor{github}{HTML}{24292E}
-\definecolor{linkedin}{HTML}{0a66c2}
+\definecolor{linkedin}{HTML}{0A66C2}
 \definecolor{telegram}{HTML}{337AB7}
 
 \usepackage{transparent}
@@ -81,8 +84,15 @@
 }
 
 % Patches
-% \usepackage{xpatch}
-% \xpatchcmd{\makecvhead}{\\[2.5em]}{\\}{}{}
+\usepackage{regexpatch}
+
+\makeatletter
+\newcommand*{\intro}[1]{\def\@intro{#1}}
+\xpatchcmd{\makecvhead}{\\[1.25em]\titlestyle{\@title}}{%
+  \\[0.8em]\titlestyle{\@title}%
+  \ifdef{\@intro}{\\[0.2em]\small\textcolor{introcolor}{\@intro}}{}%
+}{}{}
+\makeatother
 
 \AtEndPreamble{
 \hypersetup{
@@ -102,7 +112,12 @@
 }
 
 \title{%
-    \ru{C++\,/\,Python разработчик}\en{C++\,/\,Python Software Developer}%
+    \ru{C++\,/\,Python разработчик}\en{C++\,/\,Python software developer}%
+}
+
+\intro{%
+  \ru{с опытом в робототехнике, компьютерном зрении и разработке веб-сервисов. Ищу интересные задачи на стыке алгоритмического ПО и инженерной культуры.}%
+  \en{with an experience in robotics, computer vision and web services.\\Looking for interesting challenges at the intersection of algorithmic software and engineering culture.}%
 }
 
 \phone[mobile]{+7~(999)~203~83~35}
@@ -111,7 +126,7 @@
 \social[telegram]{EgorMakarenko}
 \social[linkedin]{EgorMakarenko}
 \social[github]{egormkn}
-\photo[58pt][1pt]{photo}
+\photo[52pt][1pt]{photo}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    CONTENT                                   %
@@ -121,7 +136,7 @@
 
 \makecvtitle
 
-\vspace*{-1.5em}
+\vspace*{-3em}
 
 \section{%
   \ru{Опыт работы}%
@@ -138,7 +153,7 @@
 }{}{}{%
   \ru{
     \begin{itemize}
-      \item Разрабатывал и поддерживал ROS-ноды на C++ с использованием OpenCV для калибровки внутренних параметров камер и лидаров на роботакси и роботах-курьерах.
+      \item Разрабатывал и поддерживал ROS-ноды на C++\,/\,OpenCV для калибровки внутренних параметров камер и лидаров на роботакси и роботах-курьерах.
       \item Писал код на Go с использованием Protobuf-сообщений для конфигурации пайплайна.
       \item Создал инструменты на Python для отладки кода, анализа и визуализации данных с~применением Boost.Python для генерации биндингов к коду на C++.
       \item Писал unit-тесты с помощью Google Test, Pytest и Hypothesis.
@@ -159,7 +174,7 @@
 }
 
 \cventry{\small{}2022--2024}{%
-  \ru{Fullstack-разработчик}\en{Fullstack developer}%
+  \ru{Разработчик ПО}\en{Software developer}%
 }{%
   \href{https://sudo.team/}{%
     \ru{Sudo}%
