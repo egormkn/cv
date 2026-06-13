@@ -1,10 +1,10 @@
 # Curriculum vitae / Résumé / Резюме
 
-| **[:us: Download PDF][en]** | **[:ru: Скачать PDF][ru]** |
-| :--------------------: | :-------------------: |
+| **[🇺🇸 Download PDF][en]** | **[🇷🇺 Скачать PDF][ru]** |
+| :-----------------------: | :----------------------: |
 
-[en]: https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-en.pdf "Curriculum Vitae - Egor Makarenko"
-[ru]: https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-ru.pdf "Резюме - Егор Макаренко"
+[en]: https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-en.pdf "Curriculum Vitae - C++/Python Software Developer - Egor Makarenko"
+[ru]: https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-ru.pdf "Резюме - C++/Python разработчик - Егор Макаренко"
 
 ## Development
 
