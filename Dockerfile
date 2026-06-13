@@ -1,8 +1,10 @@
 # syntax=docker/dockerfile:1
 
-FROM texlive/texlive:latest AS build
+ARG TEXLIVE_VERSION=latest
 
-WORKDIR /src
+FROM texlive/texlive:${TEXLIVE_VERSION} AS build
+
+WORKDIR /workspace
 
 COPY . .
 
@@ -10,4 +12,4 @@ RUN latexmk
 
 FROM scratch
 
-COPY --from=build /src/build/*.pdf /
+COPY --from=build /workspace/build/*.pdf /
