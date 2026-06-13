@@ -20,7 +20,7 @@ jobs:
 
       - name: Generate gitinfo2 data
         run: |
-          ./gitinfo2/post-xxx-sample.sh && cat .git/gitHeadInfo.gin
+          ./third_party/gitinfo2/post-xxx-sample.sh && cat .git/gitHeadInfo.gin
 
       - name: Build PDF documents with latexmk
         run: latexmk
@@ -46,4 +46,3 @@ jobs:
         with:
           files: "*.pdf"
           token: ${{ secrets.GITHUB_TOKEN }}
-

@@ -2,10 +2,9 @@
 *
 
 # Allow files and directories
-!/moderncv
-!/.git
+!/.git/
+!/third_party/
 !/.latexmkrc
 !/**/*.jpg
-!/**/*.pm
 !/**/*.sty
 !/**/*.tex
