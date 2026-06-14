@@ -1,4 +1,4 @@
-name: Build PDF
+name: Build
 on: [push, workflow_dispatch]
 jobs:
   build:
@@ -10,13 +10,8 @@ jobs:
         with:
           submodules: true
 
-      - name: Fix checkout
-        run: git config --system --add safe.directory $GITHUB_WORKSPACE
-
-      - name: Install fonts
-        run: |
-          find /usr/local/texlive -name 'texlive-fontconfig.conf' -exec ln -s {} /etc/fonts/conf.d/09-texlive-fonts.conf \;
-          fc-cache
+      - name: Fix checkout in container (See https://github.com/actions/checkout/issues/1169)
+        run: git config --system --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Generate gitinfo2 data
         run: |
@@ -25,34 +20,49 @@ jobs:
       - name: Build PDF documents with latexmk
         run: latexmk
 
-      - name: Upload artifacts
+      - name: Upload build
         uses: actions/upload-artifact@v7
         with:
-          name: pdf
-          path: build/*.pdf
+          name: build
+          path: ./build/*.pdf
 
   compare:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     needs: [build]
+    continue-on-error: true
     steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v8
+      - name: Checkout ${{ github.repository }}
+        uses: actions/checkout@v6
         with:
-          name: pdf
-          path: new
+          sparse-checkout: ./scripts
 
       - name: Download latest release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p ./old
-          gh release download --repo ${{ github.repository }} --pattern "*.pdf" -D ./old
+          gh release download --dir ./old --repo ${{ github.repository }} --pattern "*.pdf"
 
-      - name: Compare files
+      - name: Download build
+        uses: actions/download-artifact@v8
+        with:
+          name: build
+          path: ./new
+
+      - name: Install diff tools
+        run: sudo apt install -y diff-pdf-wx
+
+      - name: Compare pdf
         run: |
-          for file in ./new/*.pdf; do
-            echo "Comparing $file with ./old/$(basename $file)"
-          done
+          set -euxo pipefail
+          ./scripts/compare.sh | tee report.txt
+
+      - name: Upload diff
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: diff
+          path: ./
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,7 +72,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v8
         with:
-          name: pdf
+          name: build
 
       - name: Release
         uses: softprops/action-gh-release@v2
