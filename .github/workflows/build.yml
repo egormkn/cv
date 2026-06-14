@@ -34,7 +34,8 @@ jobs:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v6
         with:
-          sparse-checkout: ./scripts
+          sparse-checkout: ./scripts/compare.sh
+          sparse-checkout-cone-mode: false
 
       - name: Download latest release
         env:
