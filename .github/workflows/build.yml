@@ -14,8 +14,7 @@ jobs:
         run: git config --system --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Generate gitinfo2 data
-        run: |
-          ./third_party/gitinfo2/post-xxx-sample.sh && cat .git/gitHeadInfo.gin
+        run: ./third_party/gitinfo2/post-xxx-sample.sh && cat .git/gitHeadInfo.gin
 
       - name: Build PDF documents with latexmk
         run: latexmk
@@ -34,8 +33,7 @@ jobs:
       - name: Checkout ${{ github.repository }}
         uses: actions/checkout@v6
         with:
-          sparse-checkout: ./scripts/compare.sh
-          sparse-checkout-cone-mode: false
+          sparse-checkout: ./scripts
 
       - name: Download latest release
         env:
@@ -63,7 +61,11 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: diff
-          path: ./
+          path: |
+            ./old
+            ./new
+            ./diff
+            ./report.txt
 
   deploy:
     runs-on: ubuntu-latest
