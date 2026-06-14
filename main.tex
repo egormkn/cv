@@ -9,7 +9,7 @@
 % \moderncvbody[]{1}
 % \moderncvfoot{1}
 
-\renewcommand*{\namefont}{\fontsize{26}{26}\mdseries\upshape}
+\renewcommand*{\namefont}{\fontsize{30}{30}\mdseries\upshape}
 \renewcommand*{\titlefont}{\Large\mdseries\upshape}
 \renewcommand*{\addressfont}{\small\mdseries\upshape}
 
@@ -89,8 +89,8 @@
 \makeatletter
 \newcommand*{\intro}[1]{\def\@intro{#1}}
 \xpatchcmd{\makecvhead}{\\[1.25em]\titlestyle{\@title}}{%
-  \\[0.8em]\titlestyle{\@title}%
-  \ifdef{\@intro}{\\[0.2em]\small\textcolor{introcolor}{\@intro}}{}%
+  \\[1em]\titlestyle{\@title}%
+  \ifdef{\@intro}{\\[0.1em]\fontsize{9pt}{9pt}\selectfont\textcolor{introcolor}{\@intro}}{}%
 }{}{}
 \makeatother
 
@@ -116,8 +116,8 @@
 }
 
 \intro{%
-  \ru{с опытом в робототехнике, компьютерном зрении и разработке веб-сервисов. Ищу интересные задачи на стыке алгоритмического ПО и инженерной культуры.}%
-  \en{with an experience in robotics, computer vision and web services.\\Looking for interesting challenges at the intersection of algorithmic software and engineering culture.}%
+  \ru{с опытом в робототехнике, компьютерном зрении, разработке веб-сервисов.\\Ищу интересные алгоритмические и инфраструктурные задачи.}%
+  \en{with an experience in robotics, computer vision and web services.\\Looking for interesting algorithmic and infrastructure challenges.}%
 }
 
 \phone[mobile]{+7~(999)~203~83~35}
@@ -134,16 +134,15 @@
 
 \begin{document}
 
-\makecvtitle
+\makecvhead
 
-\vspace*{-3em}
+\vspace*{-2.5em}
 
 \section{%
-  \ru{Опыт работы}%
-  \en{Work experience}%
+  \ru{Опыт работы}\en{Work experience}%
 }
 
-\cventry{\small{}\ru{с}\en{since} 2024}{%
+\cventry{\small{}2024--2026}{%
   \ru{Разработчик ПО}\en{Software developer}%
 }{%
   \href{https://autonomy.yandex.ru/}{%
@@ -153,8 +152,8 @@
 }{}{}{%
   \ru{
     \begin{itemize}
-      \item Разрабатывал и поддерживал ROS-ноды на C++\,/\,OpenCV для калибровки внутренних параметров камер и лидаров на роботакси и роботах-курьерах.
-      \item Писал код на Go с использованием Protobuf-сообщений для конфигурации пайплайна.
+      \item Разрабатывал и поддерживал ROS-ноды (C++, OpenCV) для калибровки внутренних параметров камер и лидаров на роботакси и роботах-доставщиках.
+      \item Применял Go для конфигурации пайплайна с использованием Protobuf-сообщений.
       \item Создал инструменты на Python для отладки кода, анализа и визуализации данных с~применением Boost.Python для генерации биндингов к коду на C++.
       \item Писал unit-тесты с помощью Google Test, Pytest и Hypothesis.
       \item Проводил эксперименты для создания методики калибровки лидаров.
@@ -164,9 +163,9 @@
   \en{
     \begin{itemize}
       \item Developed and supported ROS nodes (C++, OpenCV) for calibrating intrinsic parameters of cameras and lidars on robotaxi and delivery robots.
-      \item Wrote code in Go using Protobuf messages for configuration of the pipeline.
+      \item Applied Go for pipeline configuration using Protobuf messages.
       \item Developed Python tools for debugging, data visualization and analysis using Boost.Python for generating bindings to C++ code.
-      \item Wrote unit tests using Google Test, Pytest and Hypothesis.
+      \item Wrote unit tests with Google Test, Pytest and Hypothesis.
       \item Performed experiments to develop a calibration method for lidars.
       \item Redesigned the service architecture and set up automatic data collection, simplifying quality analysis and making the process reproducible.
     \end{itemize}
@@ -183,7 +182,7 @@
 }{}{}{%
   \ru{
     \begin{itemize}
-      \item Разрабатывал веб-сервисы на FastAPI, Jupyter Widgets, React, Redux для анализа данных в~области геофизики.
+      \item Разрабатывал веб-сервисы на Python (FastAPI, Jupyter Widgets) и TypeScript (React, Redux, Next.js) для анализа данных в~области геофизики.
       \item Оптимизировал вычисления с помощью NumPy, Numba и Dask.
       \item Использовал OpenCL для переноса части расчётов на GPU.
       \item Настроил CI/CD пайплайны (сборка, тесты, деплой) с GitLab CI, Docker Compose и Nginx-Proxy.
@@ -192,9 +191,9 @@
   }%
   \en{
     \begin{itemize}
-      \item Developed web-services using FastAPI, Jupyter Widgets, React, Redux for performing scientific data analysis in geophysics.
-      \item Accelerated calculations using NumPy, Numba, Dask.
-      \item Used OpenCV to transfer some computations to the GPU.
+      \item Developed web-services using Python (FastAPI, Jupyter Widgets) and TypeScript (React, Redux, Next.js) for performing scientific data analysis in geophysics.
+      \item Accelerated calculations with NumPy, Numba and Dask.
+      \item Used OpenCL to transfer some computations to the GPU.
       \item Set up CI/CD pipelines (build, tests, deploy) with GitLab CI, Docker Compose and Nginx-Proxy.
       \item Provided technical consultations for students taking internships and completing their thesis at the company.
     \end{itemize}
@@ -215,13 +214,13 @@
   \ru{
     \begin{itemize}
       \item Разрабатывал инструменты на Java для анализа и визуализации данных в биоинформатике.
-      \item Исследовал способы решения задачи анализа вариации потока с помощью CPLEX.
+      \item Исследовал способы решения задачи анализа вариации потока с помощью IBM CPLEX.
     \end{itemize}
   }%
   \en{
     \begin{itemize}
       \item Developed tools in Java used for data analysis and visualization in bioinformatics.
-      \item Researched solutions to the flux variance analysis problem using CPLEX.
+      \item Researched solutions to the flux variance analysis problem using IBM CPLEX.
     \end{itemize}
   }%
 }
@@ -240,8 +239,8 @@
   \en{MSc, Applied Mathematics and Computer Science}%
 }{}{}{}{%
   \footnotesize\textcolor{darkgray}{%
-    \ru{Профиль: программирование и искусственный интеллект. \\ Тема ВКР: Ускорение построения кривых FORC с использованием вычислений на видеокартах.}%
-    \en{Programming and Artificial Intelligence \\ Thesis: Accelerating calculations of first-order reversal curves using GPU computing.}%
+    \ru{Профиль: программирование и искусственный интеллект.\\Тема ВКР: Ускорение построения кривых FORC с использованием вычислений на видеокартах.}%
+    \en{Programming and Artificial Intelligence\\Thesis: Accelerating calculations of first-order reversal curves using GPU computing.}%
   }%
 }
 
@@ -252,8 +251,8 @@
 }{%
 }{}{%
   \footnotesize\textcolor{darkgray}{%
-    \ru{Профиль: математические модели и алгоритмы в разработке ПО. \\ Тема ВКР: Решатель для задачи FVA на основе сведения к целочисленному линейному программированию.}%
-    \en{Mathematical Models and Algorithms in Software Development \\ Thesis: Solver for the FVA problem based on the reduction to mixed integer linear programming.}%
+    \ru{Профиль: математические модели и алгоритмы в разработке ПО.\\Тема ВКР: Решатель для задачи FVA на основе сведения к целочисленному линейному программированию.}%
+    \en{Mathematical Models and Algorithms in Software Development\\Thesis: Solver for the FVA problem based on the reduction to mixed integer linear programming.}%
   }%
 }
 
@@ -271,8 +270,8 @@
 }
 
 \cvitem{Coursera:}{%
-  \ru{Специализация \href{https://www.coursera.org/specializations/c-plus-plus-modern-development}{<<\textbf{Искусство разработки на современном C++}>>} --- Яндекс, МФТИ}%
-  \en{Specialization "\href{https://www.coursera.org/specializations/c-plus-plus-modern-development}{\textbf{The Art of Modern C++ Development}}" --- Yandex, MIPT}%
+  \ru{Специализация \href{https://www.coursera.org/specializations/c-plus-plus-modern-development}{<<\textbf{Искусство разработки на современном C++}>>} (2021) --- Яндекс, МФТИ}%
+  \en{Specialization "\href{https://www.coursera.org/specializations/c-plus-plus-modern-development}{\textbf{The Art of Modern C++ Development}}" (2021) --- Yandex, MIPT}%
 }
 
 \cvitem{SPTDC:}{%
@@ -292,8 +291,7 @@
 
 \cvwideitem{%
   \symbolwithtext{\color{color1}\faCode}{%
-    % \ru{Языки программирования:}%
-    % \en{Programming languages:}%
+    % \ru{Языки программирования:}\en{Programming languages:}%
   }%
 }{
   \nohyphens{
@@ -311,7 +309,7 @@
   }%
 }{
   \ru{Знаком с основными \textbf{алгоритмами и структурами данных}, методами \textbf{машинного обучения}, есть опыт подготовки датасетов и обучения нейросетей с фреймворками }%
-  \en{I am familiar with basic \textbf{algorithms and data structures}, methods of \textbf{machine learning}, have an experience preparing datasets and training neural networks with }\textbf{PyTorch} \ru{и}\en{and} \textbf{TensorFlow}.%
+  \en{I am familiar with basic \textbf{algorithms and data structures}, methods of \textbf{machine learning}, have experience preparing datasets and training neural networks with }\textbf{PyTorch} \ru{и}\en{and} \textbf{TensorFlow}.%
 }
 
 \cvwideitem{%
@@ -327,19 +325,22 @@
     % \ru{Языки}\en{Languages}:%
   }%
 }{%
-  \ru{\textbf{Английский} -- C1 (Advanced)}%
-  \en{\textbf{English} -- C1, \textbf{Russian} -- native}%
+  \ru{\textbf{Английский} -- C1 (Advanced).}%
+  \en{\textbf{English} -- C1, \textbf{Russian} -- native.}%
 }
 
 \rhead{%
-  \vspace{10px}\color{color2}%
-  \ru{\href{https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-en.pdf}{EN} | \textcolor{color1}{RU}}%
-  \en{\textcolor{color1}{EN} | \href{https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-ru.pdf}{RU}}%
+  \\[0.5em]
+  \makebox[60pt][center]{%
+    \small\color{color2}%
+    \ru{\href{https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-en.pdf}{EN} | \textcolor{color1}{RU}}%
+    \en{\textcolor{color1}{EN} | \href{https://github.com/egormkn/cv/releases/latest/download/cv-makarenko-ru.pdf}{RU}}%
+  }%
 }
 
 \cfoot{%
   \small\color{gray}%
-  \href{https://github.com/egormkn/cv/tags}{github.com/egormkn/cv}~\textbullet~\gitFirstTagDescribe\ (\getvariant)%
+  \href{https://github.com/egormkn/cv}{github.com/egormkn/cv}~\textbullet~\gitFirstTagDescribe%
 }
 
 \end{document}
