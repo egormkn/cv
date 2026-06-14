@@ -1,5 +1,3 @@
 {
-    "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///home/egor/Documents/cv/.github/workflows/build.yml"
-    }
+  "latex-workshop.latex.outDir": "./build"
 }
