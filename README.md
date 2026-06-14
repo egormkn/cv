@@ -1,5 +1,7 @@
 # Curriculum vitae / Résumé / Резюме
 
+[![Build](https://github.com/egormkn/cv/actions/workflows/build.yml/badge.svg)](https://github.com/egormkn/cv/actions/workflows/build.yml)
+
 | **[🇺🇸 Download PDF][en]** | **[🇷🇺 Скачать PDF][ru]** |
 | :-----------------------: | :----------------------: |
 
@@ -8,7 +10,7 @@
 
 ## Development
 
-Build pdf files with
+PDF files can be built with `latexmk` or using Docker:
 
 ```bash
 docker build --output=build .
