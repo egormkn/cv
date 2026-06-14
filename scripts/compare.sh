@@ -9,7 +9,7 @@ DIFF_DIR="./diff"
 STATUS=0
 
 # Check for files that only exist in one directory
-FILES_DIFF=$(diff -qr "$OLD_DIR" "$NEW_DIR")
+FILES_DIFF=$(diff -qr "$OLD_DIR" "$NEW_DIR" || true)
 echo "$FILES_DIFF"
 if grep -iq 'only' <<< "$FILES_DIFF"; then
   STATUS=1
