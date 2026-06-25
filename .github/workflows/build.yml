@@ -3,12 +3,12 @@ name: Build
 on: [push, workflow_dispatch]
 
 jobs:
-  build:
+  build_pdf:
     runs-on: ubuntu-latest
     container: texlive/texlive:latest
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           submodules: true
 
@@ -19,17 +19,34 @@ jobs:
         run: ./third_party/gitinfo2/post-xxx-sample.sh && cat .git/gitHeadInfo.gin
 
       - name: Build PDF documents with latexmk
+        run: latexmk && find ./build/ -type f ! -iname "*.pdf" -delete
+
+      - name: Upload pdf artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: pdf
+          path: ./build/
+
+  build_html:
+    needs: build_pdf
+    runs-on: ubuntu-latest
+    container: pdf2htmlex/pdf2htmlex:0.18.8.rc2-master-20200820-ubuntu-20.04-x86_64
+    steps:
+      - name: Download pdf artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: pdf
+          path: ./
+
+      - name: Build html with pdf2htmlEX
         run: |
-          latexmk
-          find ./build/ -type f ! -iname "*.pdf" -delete
-          find ./build/ -type f -name "*.pdf" -exec \
+          for FILE in *.pdf; do
             pdf2htmlEX \
               --process-outline 0 \
               --dest-dir build \
               --bg-format svg \
               --external-hint-tool ttfautohint \
               {} \;
-          find ./build/ -type f -name "*.pdf" -exec \
             pdf2htmlEX \
               --process-outline 0 \
               --dest-dir build \
@@ -37,25 +54,21 @@ jobs:
               --external-hint-tool ttfautohint \
               --fit-width 320 \
               mobile-{} \;
+          done
 
-      - name: Upload build
+      - name: Upload html artifact
         uses: actions/upload-artifact@v7
         with:
-          name: build
-          path: ./build/
-
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
+          name: html
           path: ./build/
 
   compare:
-    needs: build
+    needs: build_pdf
     runs-on: ubuntu-26.04
     continue-on-error: true
     steps:
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           sparse-checkout: ./scripts
 
@@ -66,10 +79,10 @@ jobs:
           mkdir -p ./old
           gh release download --dir ./old --repo ${{ github.repository }} --pattern "*.pdf"
 
-      - name: Download build
+      - name: Download pdf artifact
         uses: actions/download-artifact@v8
         with:
-          name: build
+          name: pdf
           path: ./new
 
       - name: Install diff tools
@@ -92,26 +105,41 @@ jobs:
             ./report.txt
 
   release:
-    needs: build
+    needs: [build_pdf, build_html]
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     permissions:
       contents: write  # to make a release
     steps:
-      - name: Download artifacts
+      - name: Download pdf artifact
         uses: actions/download-artifact@v8
         with:
-          name: build
+          name: pdf
+
+      - name: Download html artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: html
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./
+
       - name: Release
         uses: softprops/action-gh-release@v3
         with:
-          files: "*.pdf"
+          files: |
+            *.pdf
+            *.html
           token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Get latest tag
         id: get_latest_tag
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: echo "latest_tag=$(gh release view --json tagName --jq '.tagName')" >> "$GITHUB_OUTPUT"
+
       - name: Check if this release was latest
         id: check_latest_release
         run: |
