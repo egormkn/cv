@@ -22,6 +22,21 @@ jobs:
         run: |
           latexmk
           find ./build/ -type f ! -iname "*.pdf" -delete
+          find ./build/ -type f -name "*.pdf" -exec \
+            pdf2htmlEX \
+              --process-outline 0 \
+              --dest-dir build \
+              --bg-format svg \
+              --external-hint-tool ttfautohint \
+              {} \;
+          find ./build/ -type f -name "*.pdf" -exec \
+            pdf2htmlEX \
+              --process-outline 0 \
+              --dest-dir build \
+              --bg-format svg \
+              --external-hint-tool ttfautohint \
+              --fit-width 320 \
+              mobile-{} \;
 
       - name: Upload build
         uses: actions/upload-artifact@v7
