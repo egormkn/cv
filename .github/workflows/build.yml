@@ -41,19 +41,20 @@ jobs:
       - name: Build html with pdf2htmlEX
         run: |
           for FILE in *.pdf; do
+            OUTPUT_FILE="$(basename ${FILE%.*})"
             pdf2htmlEX \
               --process-outline 0 \
               --dest-dir build \
               --bg-format svg \
               --external-hint-tool ttfautohint \
-              {} \;
+              $FILE "$OUTPUT_FILE.html"
             pdf2htmlEX \
               --process-outline 0 \
               --dest-dir build \
               --bg-format svg \
               --external-hint-tool ttfautohint \
               --fit-width 320 \
-              mobile-{} \;
+              $FILE "$OUTPUT_FILE.mobile.html"
           done
 
       - name: Upload html artifact
