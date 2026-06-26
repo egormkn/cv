@@ -33,7 +33,7 @@ jobs:
     container: pdf2htmlex/pdf2htmlex:0.18.8.rc2-master-20200820-ubuntu-20.04-x86_64
     steps:
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y patch ttfautohint
+        run: apt-get update && apt-get install -y patch ttfautohint
 
       - name: Checkout pdf2htmlEX patch
         uses: actions/checkout@v7
