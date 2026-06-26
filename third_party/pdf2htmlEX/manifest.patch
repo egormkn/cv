@@ -1,0 +1,19 @@
+--- manifest	2026-06-26 16:37:44.447851426 +0500
++++ "manifest copy"	2026-06-26 16:41:42.522168050 +0500
+@@ -56,12 +56,16 @@
+ #TEST_IGNORE_BEGIN
+ @pdf2htmlEX.min.js
+ """
++<style type="text/css">
++#page-container { touch-action: none; } /* Prevent default touch behavior */
++</style>
+ <script>
+ try{
+   pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
+ }catch(e){}
+ </script>
+ """
++@pdf2htmlEX-zoom.js
+ #TEST_IGNORE_END
+ 
+ 

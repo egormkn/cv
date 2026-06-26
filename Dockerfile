@@ -15,21 +15,31 @@ RUN latexmk
 FROM pdf2htmlex/pdf2htmlex:${PDF2HTMLEX_VERSION} AS build_html
 
 RUN apt-get update && apt-get install -y \
+  patch \
   ttfautohint \
   && rm -rf /var/lib/apt/lists/*
+
+COPY ./third_party/pdf2htmlEX/* /usr/local/share/pdf2htmlEX/
+
+RUN patch /usr/local/share/pdf2htmlEX/manifest < /usr/local/share/pdf2htmlEX/manifest.patch
 
 WORKDIR /workspace
 
 COPY --from=build_pdf /workspace/build/*.pdf /workspace/
 
-RUN mkdir build && \
-    find . -type f -name "*.pdf" -exec \
-      pdf2htmlEX \
-        --process-outline 0 \
-        --dest-dir build \
-        --bg-format svg \
-        --external-hint-tool ttfautohint \
-        {} \;
+RUN <<EOF
+mkdir build
+for FILE in *.pdf; do
+  OUTPUT_FILE="$(basename "${FILE/%.pdf}.html")"
+  pdf2htmlEX \
+    --process-outline 0 \
+    --dest-dir build \
+    --bg-format svg \
+    --external-hint-tool ttfautohint \
+    "$FILE" "$OUTPUT_FILE"
+done
+EOF
+
 
 FROM scratch
 
