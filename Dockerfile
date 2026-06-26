@@ -30,7 +30,7 @@ COPY --from=build_pdf /workspace/build/*.pdf /workspace/
 RUN <<EOF
 mkdir -p build
 for FILE in *.pdf; do
-  OUTPUT_FILE="$(basename "${FILE/%.pdf}.html")"
+  OUTPUT_FILE="$(basename "$FILE" .pdf).html"
   pdf2htmlEX \
     --process-outline 0 \
     --dest-dir build \
