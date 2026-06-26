@@ -28,7 +28,7 @@ WORKDIR /workspace
 COPY --from=build_pdf /workspace/build/*.pdf /workspace/
 
 RUN <<EOF
-mkdir build
+mkdir -p build
 for FILE in *.pdf; do
   OUTPUT_FILE="$(basename "${FILE/%.pdf}.html")"
   pdf2htmlEX \

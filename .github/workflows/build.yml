@@ -32,6 +32,17 @@ jobs:
     runs-on: ubuntu-latest
     container: pdf2htmlex/pdf2htmlex:0.18.8.rc2-master-20200820-ubuntu-20.04-x86_64
     steps:
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y patch ttfautohint
+
+      - name: Checkout pdf2htmlEX patch
+        uses: actions/checkout@v7
+        with:
+          sparse-checkout: ./third_party/pdf2htmlEX
+
+      - name: Patch pdf2htmlEX manifest
+        run: patch /usr/local/share/pdf2htmlEX/manifest < /usr/local/share/pdf2htmlEX/manifest.patch
+
       - name: Download pdf artifact
         uses: actions/download-artifact@v8
         with:
@@ -41,20 +52,13 @@ jobs:
       - name: Build html with pdf2htmlEX
         run: |
           for FILE in *.pdf; do
-            OUTPUT_FILE="$(basename ${FILE%.*})"
+            OUTPUT_FILE="$(basename "${FILE/%.pdf}.html")"
             pdf2htmlEX \
               --process-outline 0 \
               --dest-dir build \
               --bg-format svg \
               --external-hint-tool ttfautohint \
-              $FILE "$OUTPUT_FILE.html"
-            pdf2htmlEX \
-              --process-outline 0 \
-              --dest-dir build \
-              --bg-format svg \
-              --external-hint-tool ttfautohint \
-              --fit-width 320 \
-              $FILE "$OUTPUT_FILE.mobile.html"
+              "$FILE" "$OUTPUT_FILE"
           done
 
       - name: Upload html artifact
